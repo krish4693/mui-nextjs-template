@@ -37,4 +37,5 @@ Make sure you have the following installed:
 1. **Clone the Repository:**
    ```bash
    git clone https://github.com/krish4693/mui-nextjs-template.git
-   cd nextjs-admin-template
+   cd mui-nextjs-template
+   
