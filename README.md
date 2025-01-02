@@ -29,7 +29,7 @@ Follow these instructions to set up the project locally.
 
 Make sure you have the following installed:
 
-- [Node.js](https://nodejs.org/) (v14+)
+- [Node.js](https://nodejs.org/) (Latest LTS)
 - [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
 
 ### Installation
