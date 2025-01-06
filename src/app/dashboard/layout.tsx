@@ -1,10 +1,19 @@
-import React, { Children } from 'react'
+import React from 'react'
+import Sidebar from '@/components/Sidebar/Sidebar'
+import Navbar from '@/components/Navbar/Navbar'
+import Footer from '@/components/Footer/Footer'
+
 
 const layout = ({children,}:Readonly<{
     children:React.ReactNode
 }>) => {
   return (
-    <div>{children}</div>
+    <div>
+        <Sidebar/>
+        <Navbar/>
+        {children}
+        <Footer/>
+    </div>
   )
 }
 
