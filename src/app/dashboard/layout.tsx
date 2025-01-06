@@ -9,8 +9,8 @@ const layout = ({children,}:Readonly<{
 }>) => {
   return (
     <div>
-        <Sidebar/>
         <Navbar/>
+        <Sidebar/>
         {children}
         <Footer/>
     </div>
