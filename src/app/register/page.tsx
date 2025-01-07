@@ -19,11 +19,13 @@ import { AiOutlineUser } from "react-icons/ai";
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormTextField from "@/components/Inputs/formTextField";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import FormSelectField from "@/components/Inputs/selectBox";
 
 interface FormValues {
   name: string;
   email: string;
   password: string;
+  category: string;
 }
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -192,7 +194,7 @@ const SignUpPage = () => {
               margin="normal"
               label="Email"
               variant="outlined"
-              rules={{ required: 'email is required' }}
+              rules={{ required: 'Email is required' }}
             />
            <FormTextField
               name="password"
@@ -218,6 +220,19 @@ const SignUpPage = () => {
                 ),
               }}
             />
+
+      <FormSelectField
+        name="category"
+        control={control}
+        label="Category"
+        options={[
+          { value: '', label: 'Select a category' },
+          { value: 'technology', label: 'Technology' },
+          { value: 'business', label: 'Business' },
+          { value: 'science', label: 'Science' },
+        ]}
+        rules={{ required: 'Category is required' }}
+        />
   
             <Button
               type="submit"
