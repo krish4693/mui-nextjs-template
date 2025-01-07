@@ -177,7 +177,7 @@ const SignUpPage = () => {
             <FormTextField
               name="name"
               control={control}
-              required
+              // required
               fullWidth
               margin="normal"
               label="Name"
@@ -187,7 +187,7 @@ const SignUpPage = () => {
             <FormTextField
               name="email"
               control={control}
-              required
+              // required
               fullWidth
               margin="normal"
               label="Email"
@@ -197,7 +197,7 @@ const SignUpPage = () => {
            <FormTextField
               name="password"
               control={control}
-              required
+              // required
               fullWidth
               type={showPassword ? 'text' : 'password'}
               margin="normal"
@@ -212,7 +212,7 @@ const SignUpPage = () => {
                       edge="end"
                       aria-label="toggle password visibility"
                     >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                      {showPassword ? <Visibility /> : <VisibilityOff /> }
                     </IconButton>
                   </InputAdornment>
                 ),
