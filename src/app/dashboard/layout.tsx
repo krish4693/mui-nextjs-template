@@ -1,6 +1,6 @@
 import React from 'react'
 import Sidebar from '@/components/Sidebar/Sidebar'
-import Navbar from '@/components/Navbar/Navbar'
+import Navbar from '@/components/Drawer/Drawer'
 import Footer from '@/components/Footer/Footer'
 
 
