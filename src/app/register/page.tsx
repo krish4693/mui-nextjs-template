@@ -10,10 +10,27 @@ import {
   Divider,
   Alert,
   Snackbar,
+
+  InputAdornment,
+  IconButton,
 } from "@mui/material";
 import { styled } from "@mui/system";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineUser } from "react-icons/ai";
+
+import { SubmitHandler, useForm } from "react-hook-form";
+import FormTextField from "@/components/Inputs/formTextField";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import FormSelectField from "@/components/Inputs/selectBox";
+import LogoContainer from "@/components/custom-containers/logoContainer";
+
+interface FormValues {
+  name: string;
+  email: string;
+  password: string;
+  category: string;
+}
+
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(4),
@@ -28,22 +45,23 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
     boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)"
   }));
   
-  const LogoContainer = styled(Box)({
-    width: "100%",
-    display: "flex",
-    justifyContent: "center",
-    marginBottom: "1rem"
-  });
+
+  // const LogoContainer = styled(Box)({
+  //   width: "100%",
+  //   display: "flex",
+  //   justifyContent: "center",
+  //   marginBottom: "1rem"
+  // });
   
-  const Logo = styled(Box)({
-    width: "64px",
-    height: "64px",
-    backgroundColor: "#f5f5f5",
-    borderRadius: "50%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
-  });
+  // const Logo = styled(Box)({
+  //   width: "64px",
+  //   height: "64px",
+  //   backgroundColor: "#f5f5f5",
+  //   borderRadius: "50%",
+  //   display: "flex",
+  //   alignItems: "center",
+  //   justifyContent: "center"
+  // });
   
   const GoogleButton = styled(Button)({
     width: "100%",
@@ -64,8 +82,29 @@ const SignUpPage = () => {
       password: ""
     });
   
+
     const [errors, setErrors] = useState({});
     const [showSuccess, setShowSuccess] = useState(false);
+
+    const {
+      register,
+      handleSubmit,
+      watch,
+      control,
+      formState: { errors },
+    } = useForm<FormValues>()
+  
+    // const [errors, setErrors] = useState({});
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    console.log('Form Data:', data);
+  };
+
   
     // const validateForm = () => {
     //   const newErrors = {};
@@ -116,12 +155,13 @@ const SignUpPage = () => {
     return (
       <Container component="main" maxWidth="sm">
         <StyledPaper elevation={3}>
+
           <LogoContainer>
             <Logo>
               <AiOutlineUser size={32} color="#666666" />
             </Logo>
           </LogoContainer>
-  
+
           <Typography component="h1" variant="h5" fontWeight="bold">
             Create your account
           </Typography>
@@ -144,44 +184,68 @@ const SignUpPage = () => {
   
           <Box
             component="form"
-            // onSubmit={handleSubmit}
+
+
+            onSubmit={handleSubmit(onSubmit)}
             sx={{ width: "100%", mt: 1 }}
           >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              label="Full Name"
+            <FormTextField
               name="name"
-              value={formData.name}
-            //   onChange={handleChange}
-            //   error={!!errors.name}
-            //   helperText={errors.name}
-            />
-            <TextField
-              margin="normal"
-              required
+              control={control}
+              // required
               fullWidth
-              label="Email Address"
+              margin="normal"
+              label="Name"
+              variant="outlined"
+              rules={{ required: 'Name is required' }}
+            />
+            <FormTextField
               name="email"
-              type="email"
-              value={formData.email}
-            //   onChange={handleChange}
-            //   error={!!errors.email}
-            //   helperText={errors.email}
-            />
-            <TextField
-              margin="normal"
-              required
+              control={control}
+              // required
               fullWidth
-              label="Password"
-              name="password"
-              type="password"
-              value={formData.password}
-            //   onChange={handleChange}
-            //   error={!!errors.password}
-            //   helperText={errors.password}
+              margin="normal"
+              label="Email"
+              variant="outlined"
+              rules={{ required: 'Email is required' }}
             />
+           <FormTextField
+              name="password"
+              control={control}
+              // required
+              fullWidth
+              type={showPassword ? 'text' : 'password'}
+              margin="normal"
+              label="Password"
+              variant="outlined"
+              rules={{ required: 'password is required' }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={handleTogglePasswordVisibility}
+                      edge="end"
+                      aria-label="toggle password visibility"
+                    >
+                      {showPassword ? <Visibility /> : <VisibilityOff /> }
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+
+      <FormSelectField
+        name="category"
+        control={control}
+        label="Category"
+        options={[
+          { value: '', label: 'Select a category' },
+          { value: 'technology', label: 'Technology' },
+          { value: 'business', label: 'Business' },
+          { value: 'science', label: 'Science' },
+        ]}
+        rules={{ required: 'Category is required' }}
+        />
   
             <Button
               type="submit"
