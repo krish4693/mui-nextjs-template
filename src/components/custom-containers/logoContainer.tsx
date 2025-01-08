@@ -18,10 +18,12 @@ const LogoWithContainer = styled(Box)({
   marginBottom: "1rem",
 });
 
-const Logo = styled(Box)<{ $bgColor: string; size: number }>(({ $bgColor, size }) => ({
+const Logo = styled(Box, {
+    shouldForwardProp: (prop) => prop !== "$bgColor" && prop !== "$size", // Exclude custom props
+  })<{ $bgColor: string; size: number }>(({ $bgColor, size }) => ({
   width: `${size}px`,
   height: `${size}px`,
-  backgroundColor: $bgColor,
+  backgroundColor: $bgColor || "#f5f5f5" ,
   borderRadius: "50%",
   display: "flex",
   alignItems: "center",
@@ -32,7 +34,7 @@ const LogoContainer: React.FC<LogoWithContainerProps> = ({
   renderItem,
   size = 64,
   bgColor = "#f5f5f5",
-  }) => {
+}) => {
   return (
     <LogoWithContainer>
       <Logo $bgColor={bgColor} size={size}>
