@@ -10,12 +10,14 @@ import {
   Divider,
   Alert,
   Snackbar,
+
   InputAdornment,
   IconButton,
 } from "@mui/material";
 import { styled } from "@mui/system";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineUser } from "react-icons/ai";
+
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormTextField from "@/components/Inputs/formTextField";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
@@ -28,6 +30,7 @@ interface FormValues {
   password: string;
   category: string;
 }
+
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(4),
@@ -42,6 +45,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
     boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)"
   }));
   
+
   // const LogoContainer = styled(Box)({
   //   width: "100%",
   //   display: "flex",
@@ -78,6 +82,10 @@ const SignUpPage = () => {
       password: ""
     });
   
+
+    const [errors, setErrors] = useState({});
+    const [showSuccess, setShowSuccess] = useState(false);
+
     const {
       register,
       handleSubmit,
@@ -96,6 +104,7 @@ const SignUpPage = () => {
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log('Form Data:', data);
   };
+
   
     // const validateForm = () => {
     //   const newErrors = {};
@@ -146,12 +155,13 @@ const SignUpPage = () => {
     return (
       <Container component="main" maxWidth="sm">
         <StyledPaper elevation={3}>
-        <LogoContainer
-            size={64}
-            bgColor="#f5f5f5"
-            renderItem={()=><AiOutlineUser size={32} color="#666666"/>}
-          />
-  
+
+          <LogoContainer>
+            <Logo>
+              <AiOutlineUser size={32} color="#666666" />
+            </Logo>
+          </LogoContainer>
+
           <Typography component="h1" variant="h5" fontWeight="bold">
             Create your account
           </Typography>
@@ -174,6 +184,8 @@ const SignUpPage = () => {
   
           <Box
             component="form"
+
+
             onSubmit={handleSubmit(onSubmit)}
             sx={{ width: "100%", mt: 1 }}
           >
