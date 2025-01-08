@@ -20,6 +20,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import FormTextField from "@/components/Inputs/formTextField";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import FormSelectField from "@/components/Inputs/selectBox";
+import LogoContainer from "@/components/custom-containers/logoContainer";
 
 interface FormValues {
   name: string;
@@ -41,22 +42,22 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
     boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)"
   }));
   
-  const LogoContainer = styled(Box)({
-    width: "100%",
-    display: "flex",
-    justifyContent: "center",
-    marginBottom: "1rem"
-  });
+  // const LogoContainer = styled(Box)({
+  //   width: "100%",
+  //   display: "flex",
+  //   justifyContent: "center",
+  //   marginBottom: "1rem"
+  // });
   
-  const Logo = styled(Box)({
-    width: "64px",
-    height: "64px",
-    backgroundColor: "#f5f5f5",
-    borderRadius: "50%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
-  });
+  // const Logo = styled(Box)({
+  //   width: "64px",
+  //   height: "64px",
+  //   backgroundColor: "#f5f5f5",
+  //   borderRadius: "50%",
+  //   display: "flex",
+  //   alignItems: "center",
+  //   justifyContent: "center"
+  // });
   
   const GoogleButton = styled(Button)({
     width: "100%",
@@ -145,11 +146,11 @@ const SignUpPage = () => {
     return (
       <Container component="main" maxWidth="sm">
         <StyledPaper elevation={3}>
-          <LogoContainer>
-            <Logo>
-              <AiOutlineUser size={32} color="#666666" />
-            </Logo>
-          </LogoContainer>
+        <LogoContainer
+            size={64}
+            bgColor="#f5f5f5"
+            renderItem={()=><AiOutlineUser size={32} color="#666666"/>}
+          />
   
           <Typography component="h1" variant="h5" fontWeight="bold">
             Create your account
