@@ -11,7 +11,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { styled, useTheme } from '@mui/material/styles';
 import { Settings } from '@mui/icons-material';
-import { useRouter } from 'next/router'; // Use Next.js router for navigation
+import { useRouter } from 'next/navigation'; // Use Next.js router for navigation
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
