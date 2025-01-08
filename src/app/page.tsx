@@ -1,5 +1,8 @@
 import theme from "@/theme";
 import { Container, Typography } from "@mui/material";
+import DateInput from "@/components/Inputs/datePicker";
+import TimeInput from "@/components/Inputs/timepicker";
+import DateRange from "@/components/Inputs/timerange";
 
 export default function Home() {
   return (
@@ -8,6 +11,8 @@ export default function Home() {
         <Typography variant="h1" sx={{p:1,':hover':{bgcolor:'darkblue'}}}>
           Hello World
         </Typography>
+        <TimeInput />
+        <DateRange/>
       </Container>
     </div>
   );

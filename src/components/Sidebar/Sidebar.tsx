@@ -7,11 +7,13 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { styled, useTheme } from '@mui/material/styles';
+import { Settings } from '@mui/icons-material';
+import { useRouter } from 'next/navigation'; // Use Next.js router for navigation
+import MenuIcon from '@mui/icons-material/Menu';
+
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -29,6 +31,7 @@ interface SideDrawerProps {
 
 const SideDrawer: React.FC<SideDrawerProps> = ({ drawerWidth, open, handleDrawerClose }) => {
   const theme = useTheme();
+  const router = useRouter(); // Initialize Next.js router
 
   return (
     <Drawer
@@ -46,34 +49,21 @@ const SideDrawer: React.FC<SideDrawerProps> = ({ drawerWidth, open, handleDrawer
     >
       <DrawerHeader>
         <IconButton onClick={handleDrawerClose}>
-          {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          
+          {theme.direction === 'ltr' ? <MenuIcon /> : <ChevronRightIcon />}
         </IconButton>
       </DrawerHeader>
       <Divider />
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {/* Changed from static list items to include only 'Settings' for navigation */}
+        <ListItem disablePadding>
+          <ListItemButton onClick={() => router.push('/settings') /* Navigate to /settings */}>
+            <ListItemIcon>
+              <Settings />
+            </ListItemIcon>
+            <ListItemText primary="Settings" />
+          </ListItemButton>
+        </ListItem>
       </List>
     </Drawer>
   );
