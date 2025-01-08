@@ -18,7 +18,9 @@
     "@mui/x-date-pickers": "^7.23.3",
     "next": "15.1.2",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
+    "react-icons": "^5.4.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
