@@ -4,7 +4,6 @@ import {
   Box,
   Button,
   Container,
-  TextField,
   Typography,
   Paper,
   Divider,
@@ -83,8 +82,8 @@ const SignUpPage = () => {
     });
   
 
-    const [errors, setErrors] = useState({});
-    const [showSuccess, setShowSuccess] = useState(false);
+    // const [errors, setErrors] = useState({});
+    // const [showSuccess, setShowSuccess] = useState(false);
 
     const {
       register,
@@ -156,11 +155,11 @@ const SignUpPage = () => {
       <Container component="main" maxWidth="sm">
         <StyledPaper elevation={3}>
 
-          <LogoContainer>
-            <Logo>
-              <AiOutlineUser size={32} color="#666666" />
-            </Logo>
-          </LogoContainer>
+          <LogoContainer  
+            size={64}
+            bgColor={"#f5f5f5"}
+            renderItem={() => <AiOutlineUser size={32} color="#666666" />}/>
+             
 
           <Typography component="h1" variant="h5" fontWeight="bold">
             Create your account
