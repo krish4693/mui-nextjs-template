@@ -12,6 +12,8 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { styled, useTheme } from '@mui/material/styles';
 import { Settings } from '@mui/icons-material';
 import { useRouter } from 'next/navigation'; // Use Next.js router for navigation
+import MenuIcon from '@mui/icons-material/Menu';
+
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -47,7 +49,8 @@ const SideDrawer: React.FC<SideDrawerProps> = ({ drawerWidth, open, handleDrawer
     >
       <DrawerHeader>
         <IconButton onClick={handleDrawerClose}>
-          {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          
+          {theme.direction === 'ltr' ? <MenuIcon /> : <ChevronRightIcon />}
         </IconButton>
       </DrawerHeader>
       <Divider />
