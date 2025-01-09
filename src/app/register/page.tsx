@@ -158,7 +158,8 @@ const SignUpPage = () => {
           <LogoContainer  
             size={64}
             bgColor={"#f5f5f5"}
-            renderItem={() => <AiOutlineUser size={32} color="#666666" />}/>
+            renderItem={() => <AiOutlineUser size={32} color="#666666" />}
+          />
              
 
           <Typography component="h1" variant="h5" fontWeight="bold">

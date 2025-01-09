@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "@mui/material/styles";
+import { styled, SxProps } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import { AiOutlineUser } from "react-icons/ai";
 import { IconBaseProps } from "react-icons";
@@ -9,13 +9,14 @@ interface LogoWithContainerProps {
     size?: number;
     bgColor?: string;
     iconColor?: string;
+    containerStyle?: SxProps;
 }
 
 const LogoWithContainer = styled(Box)({
   width: "100%",
   display: "flex",
   justifyContent: "center",
-  marginBottom: "1rem",
+  // marginBottom: "1rem",
 });
 
 const Logo = styled(Box, {
@@ -33,10 +34,11 @@ const Logo = styled(Box, {
 const LogoContainer: React.FC<LogoWithContainerProps> = ({
   renderItem,
   size = 64,
-  bgColor = "#f5f5f5",
+  bgColor = "#ffffff",
+  containerStyle,
 }) => {
   return (
-    <LogoWithContainer>
+    <LogoWithContainer sx={{...containerStyle}}>
       <Logo $bgColor={bgColor} size={size}>
          {renderItem()}
       </Logo>
