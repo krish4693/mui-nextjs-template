@@ -22,12 +22,14 @@ import FormTextField from "@/components/Inputs/formTextField";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import FormSelectField from "@/components/Inputs/selectBox";
 import LogoContainer from "@/components/custom-containers/logoContainer";
+import RadioButtons from "@/components/Inputs/radioGroup";
 
 interface FormValues {
   name: string;
   email: string;
   password: string;
   category: string;
+  gender: string;
 }
 
 
@@ -96,6 +98,11 @@ const SignUpPage = () => {
     // const [errors, setErrors] = useState({});
   const [showSuccess, setShowSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const genderOptions = [
+    { value: 'female', label: 'Female' },
+    { value: 'male', label: 'Male' },
+    { value: 'other', label: 'Other' },
+  ]
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
@@ -158,7 +165,8 @@ const SignUpPage = () => {
           <LogoContainer  
             size={64}
             bgColor={"#f5f5f5"}
-            renderItem={() => <AiOutlineUser size={32} color="#666666" />}/>
+            renderItem={() => <AiOutlineUser size={32} color="#666666" />}
+          />
              
 
           <Typography component="h1" variant="h5" fontWeight="bold">
@@ -183,8 +191,6 @@ const SignUpPage = () => {
   
           <Box
             component="form"
-
-
             onSubmit={handleSubmit(onSubmit)}
             sx={{ width: "100%", mt: 1 }}
           >
@@ -244,7 +250,15 @@ const SignUpPage = () => {
           { value: 'science', label: 'Science' },
         ]}
         rules={{ required: 'Category is required' }}
-        />
+            />
+            
+            <RadioButtons 
+              name ="gender"
+              label="Gender"
+              options={genderOptions}
+              control={control}
+              rules={{ required: 'Gender is required' }}
+              />
   
             <Button
               type="submit"
