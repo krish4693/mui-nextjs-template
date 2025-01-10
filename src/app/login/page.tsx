@@ -9,7 +9,6 @@ import {
   Divider,
   Alert,
   Snackbar,
-
   InputAdornment,
   IconButton,
 } from "@mui/material";
@@ -79,11 +78,12 @@ const SignUpPage = () => {
   };
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log('Form Data:', data);
+    setShowSuccess(true);
   };
 
   
     return (
-      <Container component="main" maxWidth="sm">
+      <Container component="main" maxWidth="md">
         <StyledPaper elevation={3}>
 
           <LogoContainer  
@@ -167,7 +167,7 @@ const SignUpPage = () => {
   
         <Snackbar
           open={showSuccess}
-          autoHideDuration={6000}
+          autoHideDuration={5000}
           onClose={() => setShowSuccess(false)}
           anchorOrigin={{ vertical: "top", horizontal: "center" }}
         >
