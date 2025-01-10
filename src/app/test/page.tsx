@@ -50,7 +50,10 @@ export default function TestPage() {
     
   return (
       <Container maxWidth="lg" sx={{display:"flex",justifyContent:"center",alignContent:"center"}}>
-          <CustomTable columns={columns} data={data}/>
+          <CustomTable
+            //   columns={columns}
+            //   data={data}
+              url='https://jsonplaceholder.typicode.com/users' />
      </Container>
   )
 }
