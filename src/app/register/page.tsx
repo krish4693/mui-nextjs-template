@@ -28,8 +28,6 @@ interface FormValues {
   name: string;
   email: string;
   password: string;
-  category: string;
-  gender: string;
 }
 
 
@@ -239,26 +237,9 @@ const SignUpPage = () => {
               }}
             />
 
-      <FormSelectField
-        name="category"
-        control={control}
-        label="Category"
-        options={[
-          { value: '', label: 'Select a category' },
-          { value: 'technology', label: 'Technology' },
-          { value: 'business', label: 'Business' },
-          { value: 'science', label: 'Science' },
-        ]}
-        rules={{ required: 'Category is required' }}
-            />
+      
             
-            <RadioButtons 
-              name ="gender"
-              label="Gender"
-              options={genderOptions}
-              control={control}
-              rules={{ required: 'Gender is required' }}
-              />
+          
   
             <Button
               type="submit"
