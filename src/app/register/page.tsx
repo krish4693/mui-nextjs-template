@@ -20,9 +20,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormTextField from "@/components/Inputs/formTextField";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import FormSelectField from "@/components/Inputs/selectBox";
 import LogoContainer from "@/components/custom-containers/logoContainer";
-import RadioButtons from "@/components/Inputs/radioGroup";
 
 interface FormValues {
   name: string;

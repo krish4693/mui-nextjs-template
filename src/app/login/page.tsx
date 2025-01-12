@@ -64,11 +64,8 @@ const SignUpPage = () => {
 
 
     const {
-      register,
       handleSubmit,
-      watch,
       control,
-      formState: { errors },
     } = useForm<FormValues>()
   
   const [showSuccess, setShowSuccess] = useState(false);
