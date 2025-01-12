@@ -12,6 +12,9 @@ import { styled, useTheme } from '@mui/material/styles';
 import { Settings } from '@mui/icons-material';
 import { useRouter } from 'next/navigation'; // Use Next.js router for navigation
 import MenuIcon from '@mui/icons-material/Menu';
+import LogoContainer from '../custom-containers/logoContainer';
+import Image from 'next/image';
+import logo from '../../../public/social.png'
 
 
 const DrawerHeader = styled('div')(({ theme }) => ({
@@ -47,6 +50,17 @@ const SideDrawer: React.FC<SideDrawerProps> = ({ drawerWidth, open, handleDrawer
       open={open}
     >
       <DrawerHeader>
+        <LogoContainer
+          renderItem={() =>
+            <Image
+              src={logo}
+              alt={"logo"}
+              height={32}
+              width={32}
+            />
+         }
+        containerStyle={{ justifyContent: "flex-start" }} 
+        />
         <IconButton onClick={handleDrawerClose}>
           
           {theme.direction === 'ltr' ? <MenuIcon /> : <ChevronRightIcon />}
