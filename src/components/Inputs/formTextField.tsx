@@ -1,30 +1,25 @@
 import React from 'react';
 import { TextField, TextFieldProps } from '@mui/material';
-import { useController,ControllerProps } from 'react-hook-form';
+import { useController, UseControllerProps, FieldValues } from 'react-hook-form';
 
-interface FormTextFieldProps extends Omit<TextFieldProps, 'name' | 'defaultValue'|  'rules'> {
-  name: string;
-  control: ControllerProps['control'];
-  defaultValue?: ControllerProps['defaultValue'];
-  rules?: ControllerProps['rules'];
-}
+interface FormTextFieldProps<T extends FieldValues>
+  extends UseControllerProps<T>,
+    Omit<TextFieldProps, 'name' | 'defaultValue'> {}
 
-
-const FormTextField:React.FC<FormTextFieldProps> =  ({ name, control, defaultValue, rules, ...textFieldProps }) => {
+const FormTextField = <T extends FieldValues>({
+  name,
+  control,
+  defaultValue,
+  rules,
+  ...textFieldProps
+}: FormTextFieldProps<T>) => {
   const {
     field: { onChange, onBlur, value, ref },
     fieldState: { error },
   } = useController({ name, control, defaultValue, rules });
 
-    return (
-      /*
-       -some types to change behaviour of text field
-       -"password"
-       -"number"
-       -"search"
-       -use "multiline" prop to change into multiline
-      */
-        <TextField
+  return (
+    <TextField
       {...textFieldProps}
       inputRef={ref}
       value={value || ''}
