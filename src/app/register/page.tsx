@@ -21,7 +21,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import LogoContainer from "@/components/custom-containers/logoContainer";
 import FileInput from "@/components/Inputs/testFileUpload";
 import Image from "next/image";
-import login from "../../../public/illustration.png";
+import login from "../../../public/login1.png";
 import Link from "next/link";
 
 interface FormValues {
@@ -169,8 +169,8 @@ const SignUpPage = () => {
               display: {xs:"none",lg:"flex"},
               alignItems: "center",
               justifyContent: "center",
-              bgcolor: "#151419",
-              borderRadius: 2,
+              // bgcolor: "#151419",
+              // borderRadius: 2,
             }}
           >
             <Image

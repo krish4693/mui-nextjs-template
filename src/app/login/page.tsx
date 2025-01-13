@@ -21,7 +21,7 @@ import FormTextField from "@/components/Inputs/formTextField";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import LogoContainer from "@/components/custom-containers/logoContainer";
 import Image from "next/image";
-import login from "../../../public/illustration.png";
+import login from "../../../public/login1.png";
 import Link from "next/link";
 
 interface FormValues {
@@ -99,8 +99,8 @@ const SignUpPage = () => {
               display: { xs: "none", lg: "flex" },
               alignItems: "center",
               justifyContent: "center",
-              bgcolor: "#151419",
-              borderRadius: 2,
+              // bgcolor: "#151419",
+              // borderRadius: 2,
             }}
           >
             <Image
@@ -197,7 +197,7 @@ const SignUpPage = () => {
               </Button>
               <Typography variant="body2" sx={{ textAlign: "center", mt: 2 }}>
                 Don't have an account?{" "}
-                <Link href="/login" passHref>
+                <Link href="/register" passHref>
                   <Typography
                     component="span"
                     variant="body2"
