@@ -1,10 +1,9 @@
 "use client";
 import { LocalizationProvider, TimePicker } from "@mui/x-date-pickers";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import React, { useState } from "react";
-import { TextField } from "@mui/material";
-import dayjs, { Dayjs } from "dayjs";
+import { Dayjs } from "dayjs";
+import { Box, Typography } from "@mui/material";
 export default function DateRange() {
     const [startTime, setStartTime] = useState<Dayjs | null>(null);
     const [endTime, setEndTime] = useState<Dayjs | null>(null);
@@ -29,7 +28,7 @@ export default function DateRange() {
     };
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <div>
+      <Box>
         <TimePicker
           label="From"
           value={startTime}
@@ -40,7 +39,12 @@ export default function DateRange() {
           value={endTime}
           onChange={handleToTimeChange}
         />
-      </div>
+        {error && (
+          <Typography color="error" variant="body2" sx={{ mt: 2 }}>
+            {error}
+          </Typography>
+        )}
+      </Box>
     </LocalizationProvider>
   );
 }
