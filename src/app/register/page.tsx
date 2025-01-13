@@ -19,7 +19,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import FormTextField from "@/components/Inputs/formTextField";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import LogoContainer from "@/components/custom-containers/logoContainer";
-import FileInput from "@/components/Inputs/testFileUpload";
 import Image from "next/image";
 import login from "../../../public/login1.png";
 import Link from "next/link";
@@ -74,19 +73,19 @@ const GoogleButton = styled(Button)({
 });
 
 const SignUpPage = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   name: "",
+  //   email: "",
+  //   password: "",
+  // });
 
   // const [errors, setErrors] = useState({});
   // const [showSuccess, setShowSuccess] = useState(false);
 
   const {
-    register,
+    // register,
     handleSubmit,
-    watch,
+    // watch,
     control,
     formState: { errors },
   } = useForm<FormValues>();
@@ -94,11 +93,11 @@ const SignUpPage = () => {
   // const [errors, setErrors] = useState({});
   const [showSuccess, setShowSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const genderOptions = [
-    { value: "female", label: "Female" },
-    { value: "male", label: "Male" },
-    { value: "other", label: "Other" },
-  ];
+  // const genderOptions = [
+  //   { value: "female", label: "Female" },
+  //   { value: "male", label: "Male" },
+  //   { value: "other", label: "Other" },
+  // ];
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);

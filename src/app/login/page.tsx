@@ -55,16 +55,16 @@ const GoogleButton = styled(Button)({
 });
 
 const SignUpPage = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   name: "",
+  //   email: "",
+  //   password: "",
+  // });
 
   const {
-    register,
+    // register,
     handleSubmit,
-    watch,
+    // watch,
     control,
     formState: { errors },
   } = useForm<FormValues>();
