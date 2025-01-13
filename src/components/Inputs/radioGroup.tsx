@@ -4,7 +4,6 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-import { useState } from "react";
 import {
   FieldValues,
   useController,
@@ -21,7 +20,6 @@ const RadioButtons = <T extends FieldValues>({
   name,
   control,
   rules,
-  defaultValue,
   label,
   options,
 }: RadioGroupProps<T>) => {
@@ -29,11 +27,8 @@ const RadioButtons = <T extends FieldValues>({
     field,
     fieldState: { error },
   } = useController({ name, control, rules });
-  const [value, setValue] = useState("female");
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue((event.target as HTMLInputElement).value);
-  };
+  
 
   return (
     <FormControl>

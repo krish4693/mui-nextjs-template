@@ -1,9 +1,16 @@
 import React from 'react';
 import { TextField, TextFieldProps } from '@mui/material';
-import { useController, FieldValues, UseControllerProps } from 'react-hook-form';
+import { useController,ControllerProps } from 'react-hook-form';
+
+interface FormTextFieldProps extends Omit<TextFieldProps, 'name' | 'defaultValue'|  'rules'> {
+  name: string;
+  control: ControllerProps['control'];
+  defaultValue?: ControllerProps['defaultValue'];
+  rules?: ControllerProps['rules'];
+}
 
 
-const FormTextField =  ({ name, control, defaultValue, rules, ...textFieldProps }: any) => {
+const FormTextField:React.FC<FormTextFieldProps> =  ({ name, control, defaultValue, rules, ...textFieldProps }) => {
   const {
     field: { onChange, onBlur, value, ref },
     fieldState: { error },

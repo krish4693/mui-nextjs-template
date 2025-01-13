@@ -73,32 +73,21 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   });
 
 const SignUpPage = () => {
-    const [formData, setFormData] = useState({
-      name: "",
-      email: "",
-      password: ""
-    });
+    
   
 
     // const [errors, setErrors] = useState({});
     // const [showSuccess, setShowSuccess] = useState(false);
 
     const {
-      register,
       handleSubmit,
-      watch,
       control,
-      formState: { errors },
     } = useForm<FormValues>()
   
     // const [errors, setErrors] = useState({});
   const [showSuccess, setShowSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const genderOptions = [
-    { value: 'female', label: 'Female' },
-    { value: 'male', label: 'Male' },
-    { value: 'other', label: 'Other' },
-  ]
+  
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);

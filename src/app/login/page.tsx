@@ -55,11 +55,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   });
 
 const SignUpPage = () => {
-    const [formData, setFormData] = useState({
-      name: "",
-      email: "",
-      password: ""
-    });
+   
   
 
 
