@@ -5,6 +5,8 @@ import "./globals.css";
 import { Roboto } from 'next/font/google';
 import { ThemeProvider,createTheme } from '@mui/material/styles';
 import theme from '../theme';
+import { GlobalStyles } from "@mui/material";
+import { globalStyles } from "@/styles/globalStyles";
 
 
 
@@ -44,6 +46,7 @@ export default function RootLayout({
       >
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
+            <GlobalStyles styles={globalStyles} />
             {children}
           </ThemeProvider>
         </AppRouterCacheProvider>
