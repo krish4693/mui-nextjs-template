@@ -76,7 +76,8 @@ const SignUpPage = () => {
     setShowPassword((prev) => !prev);
   };
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log("Form Data:", data);
+    console.log('Form Data:', data);
+    setShowSuccess(true);
   };
 
   return (
