@@ -16,15 +16,15 @@ interface Column<T> {
   label: string;
 }
 
-interface TableProps<T> {
+interface TableProps {
   url: string;
   // columns: Column<T>[];
   // data: T[];
 }
 
-export default function CustomTable<T extends Record<string, any>>({
+export default function CustomTable<T extends Record<string, unknown>>({
   url,
-}: TableProps<T>) {
+}: TableProps) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [totalRows, setTotalRows] = useState(0);
@@ -42,8 +42,8 @@ export default function CustomTable<T extends Record<string, any>>({
   };
 
   const fetchData = async () => {
-    let response = await fetch(url);
-    let data = await response.json();
+    const response = await fetch(url);
+    const data = await response.json();
     setTableData(data);
     setTotalRows(data.length);
     setColumns([
@@ -58,7 +58,7 @@ export default function CustomTable<T extends Record<string, any>>({
 
   useEffect(() => {
     fetchData();
-  }, []);
+  });
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden", marginTop: 8 }}>
@@ -75,10 +75,10 @@ export default function CustomTable<T extends Record<string, any>>({
             {tableData
               ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => (
-                <TableRow key={row.id}>
+                <TableRow key={String(row.id)}>
                   {columns?.map((column) => (
                     <TableCell key={String(column.id)}>
-                      {row[column.id]}
+                      {row[column.id] as React.ReactNode}
                     </TableCell>
                   ))}
                 </TableRow>

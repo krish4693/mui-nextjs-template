@@ -28,7 +28,8 @@ const RadioButtons = <T extends FieldValues>({
   const {
     field,
     fieldState: { error },
-  } = useController({ name, control, rules });
+  } = useController({ name, control, rules, defaultValue });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [value, setValue] = useState("female");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,7 +39,7 @@ const RadioButtons = <T extends FieldValues>({
   return (
     <FormControl>
       <FormLabel id="demo-controlled-radio-buttons-group">{label}</FormLabel>
-      <RadioGroup {...field} value={field.value ?? ""}>
+      <RadioGroup {...field} value={field.value ?? ""} onChange={handleChange}>
         {options.map((option) => (
           <FormControlLabel
             key={option.value}

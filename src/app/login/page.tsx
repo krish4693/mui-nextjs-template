@@ -62,10 +62,9 @@ const SignUpPage = () => {
   // });
 
   const {
-    // register,
     handleSubmit,
-    // watch,
     control,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     formState: { errors },
   } = useForm<FormValues>();
 
@@ -197,7 +196,7 @@ const SignUpPage = () => {
                 Sign Up
               </Button>
               <Typography variant="body2" sx={{ textAlign: "center", mt: 2 }}>
-                Don't have an account?{" "}
+                Don&apos;t have an account?{" "}
                 <Link href="/register" passHref>
                   <Typography
                     component="span"

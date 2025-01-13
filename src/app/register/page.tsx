@@ -83,10 +83,9 @@ const SignUpPage = () => {
   // const [showSuccess, setShowSuccess] = useState(false);
 
   const {
-    // register,
     handleSubmit,
-    // watch,
     control,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     formState: { errors },
   } = useForm<FormValues>();
 
