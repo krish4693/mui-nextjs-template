@@ -1,8 +1,6 @@
 import React from "react";
 import { styled, SxProps } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-// import { AiOutlineUser } from "react-icons/ai";
-// import { IconBaseProps } from "react-icons";
 
 interface LogoWithContainerProps {
     renderItem: () => React.ReactNode;
