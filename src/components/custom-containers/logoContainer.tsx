@@ -1,6 +1,6 @@
 import React from "react";
-import { styled, SxProps } from "@mui/material/styles";
-import Box from "@mui/material/Box";
+import {SxProps } from "@mui/material/styles";
+import { Logo, LogoWithContainer } from "@/styles/customThemes";
 // import { AiOutlineUser } from "react-icons/ai";
 // import { IconBaseProps } from "react-icons";
 
@@ -12,24 +12,7 @@ interface LogoWithContainerProps {
     containerStyle?: SxProps;
 }
 
-const LogoWithContainer = styled(Box)({
-  width: "100%",
-  display: "flex",
-  justifyContent: "center",
-  // marginBottom: "1rem",
-});
 
-const Logo = styled(Box, {
-    shouldForwardProp: (prop) => prop !== "$bgColor" && prop !== "$size", // Exclude custom props
-  })<{ $bgColor: string; size: number }>(({ $bgColor, size }) => ({
-  width: `${size}px`,
-  height: `${size}px`,
-  backgroundColor: $bgColor || "#f5f5f5" ,
-  borderRadius: "50%",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
 
 const LogoContainer: React.FC<LogoWithContainerProps> = ({
   renderItem,

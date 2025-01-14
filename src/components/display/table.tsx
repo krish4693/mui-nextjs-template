@@ -1,4 +1,5 @@
 "use client";
+import { Column } from "@/interfaces/types";
 import {
   Paper,
   Table,
@@ -11,16 +12,13 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 
-interface Column<T> {
-  id: keyof T;
-  label: string;
-}
-
 interface TableProps {
   url: string;
   // columns: Column<T>[];
   // data: T[];
 }
+
+
 
 export default function CustomTable<T extends Record<string, unknown>>({
   url,
