@@ -4,7 +4,9 @@ import { useController, UseControllerProps, FieldValues } from 'react-hook-form'
 
 interface FormTextFieldProps<T extends FieldValues>
   extends UseControllerProps<T>,
-    Omit<TextFieldProps, 'name' | 'defaultValue'> {}
+  Omit<TextFieldProps, 'name' | 'defaultValue'> {
+    control?: UseControllerProps<T>['control'];
+  }
 
 const FormTextField = <T extends FieldValues>({
   name,
@@ -13,6 +15,15 @@ const FormTextField = <T extends FieldValues>({
   rules,
   ...textFieldProps
 }: FormTextFieldProps<T>) => {
+  if (!control) {
+    return (
+      <TextField
+        {...textFieldProps}
+        name={name}
+        defaultValue={defaultValue || ''}
+      />
+    );
+  }
   const {
     field: { onChange, onBlur, value, ref },
     fieldState: { error },
