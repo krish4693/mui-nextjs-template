@@ -33,6 +33,7 @@ export default function CustomTable<T extends Record<string, unknown>>({
   const [loading, setLoading] = useState(false);
 
   const options = [
+    { value: "", label: "None" },
     { value: "age", label: "Age" },
     { value: "price", label: "Price" },
     { value: "date", label: "Date" },
@@ -78,7 +79,7 @@ export default function CustomTable<T extends Record<string, unknown>>({
     <Paper sx={{ width: "100%", overflow: "hidden", marginTop: 8 }}>
       {!loading ? (
         <>
-          <Box sx={{ display: "flex", justifyContent: "space-between", m:2}}>
+          <Box sx={{ display: "flex", m:2,gap:1}}>
           <SearchBox />
           <SelectField
             options={options}
