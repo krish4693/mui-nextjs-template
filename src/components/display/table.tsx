@@ -1,6 +1,9 @@
 "use client";
 import { Column } from "@/interfaces/types";
 import {
+  Box,
+  IconButton,
+  InputAdornment,
   Paper,
   Table,
   TableBody,
@@ -11,14 +14,15 @@ import {
   TableRow,
 } from "@mui/material";
 import { useEffect, useState } from "react";
+import FormTextField from "../Inputs/formTextField";
+import { Search } from "@mui/icons-material";
+import SearchBox from "../Inputs/searchBox";
 
 interface TableProps {
   url: string;
   // columns: Column<T>[];
   // data: T[];
 }
-
-
 
 export default function CustomTable<T extends Record<string, unknown>>({
   url,
@@ -60,6 +64,7 @@ export default function CustomTable<T extends Record<string, unknown>>({
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden", marginTop: 8 }}>
+    <SearchBox />
       <TableContainer sx={{ height: 330 }}>
         <Table>
           <TableHead>
