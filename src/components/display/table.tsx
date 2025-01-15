@@ -14,6 +14,7 @@ import {
 import { useEffect, useState } from "react";
 import SearchBox from "../Inputs/searchBox";
 import Loader from "../Loader/loader";
+import SelectField from "../Inputs/selectBox";
 
 interface TableProps {
   url: string;
@@ -31,6 +32,13 @@ export default function CustomTable<T extends Record<string, unknown>>({
   const [columns, setColumns] = useState<Column<T>[]>();
   const [loading, setLoading] = useState(false);
 
+  const options = [
+    { value: "age", label: "Age" },
+    { value: "price", label: "Price" },
+    { value: "date", label: "Date" },
+    
+  ]
+
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
   };
@@ -40,7 +48,6 @@ export default function CustomTable<T extends Record<string, unknown>>({
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,28 +65,39 @@ export default function CustomTable<T extends Record<string, unknown>>({
           { id: "phone", label: "Phone Number" },
           { id: "website", label: "Website" },
         ]);
-        setLoading(false);    
+        setLoading(false);
       } catch (error) {
         console.error(error);
       }
     };
-  
+
     fetchData();
-  },[url]);
+  }, [url]);
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden", marginTop: 8 }}>
       {!loading ? (
         <>
-        <Box sx={{ p: 2 }}>
+          <Box sx={{ display: "flex", justifyContent: "space-between", m:2}}>
           <SearchBox />
-        </Box>
-          <TableContainer sx={{ height: 330 }}>
+          <SelectField
+            options={options}
+            label="Filter By" 
+          />
+          </Box>
+          <TableContainer sx={{ height: 330, px: 2 }}>
             <Table>
               <TableHead>
-                <TableRow>
+                <TableRow
+                >
                   {columns?.map((column) => (
-                    <TableCell key={String(column.id)}>
+                    <TableCell
+                      key={String(column.id)}
+                      sx={{
+                        backgroundColor: '#000000',
+                        color: '#ffffff',
+                      }}
+                    >
                       {column.label}
                     </TableCell>
                   ))}
@@ -89,9 +107,13 @@ export default function CustomTable<T extends Record<string, unknown>>({
                 {tableData
                   ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row) => (
-                    <TableRow key={String(row.id)}>
+                    <TableRow
+                      key={String(row.id)}
+                    >
                       {columns?.map((column) => (
-                        <TableCell key={String(column.id)}>
+                        <TableCell
+                          key={String(column.id)}  
+                        >
                           {row[column.id] as React.ReactNode}
                         </TableCell>
                       ))}
@@ -100,6 +122,7 @@ export default function CustomTable<T extends Record<string, unknown>>({
               </TableBody>
             </Table>
           </TableContainer>
+
           <TablePagination
             component="div"
             count={totalRows}
