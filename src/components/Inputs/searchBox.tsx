@@ -1,12 +1,11 @@
 import React from 'react';
-import { Box, IconButton, InputAdornment } from '@mui/material';
+import { Box, IconButton, InputAdornment, TextField } from '@mui/material';
 import Search from '@mui/icons-material/Search';
-import FormTextField from './formTextField';
 
 const SearchBox = () => {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'flex-start', p: 2 }}>
-      <FormTextField
+      <TextField
         label="Search"
         name="search"
         type="search"

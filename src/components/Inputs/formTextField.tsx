@@ -19,15 +19,6 @@ const FormTextField = <T extends FieldValues>({
     field: { onChange, onBlur, value, ref },
     fieldState: { error },
   } = useController({ name, control, defaultValue, rules });
-  if (!control) {
-    return (
-      <TextField
-        {...textFieldProps}
-        name={name}
-        defaultValue={defaultValue || ''}
-      />
-    );
-  }
   
   return (
     <TextField
