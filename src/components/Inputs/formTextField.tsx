@@ -15,6 +15,10 @@ const FormTextField = <T extends FieldValues>({
   rules,
   ...textFieldProps
 }: FormTextFieldProps<T>) => {
+  const {
+    field: { onChange, onBlur, value, ref },
+    fieldState: { error },
+  } = useController({ name, control, defaultValue, rules });
   if (!control) {
     return (
       <TextField
@@ -24,11 +28,7 @@ const FormTextField = <T extends FieldValues>({
       />
     );
   }
-  const {
-    field: { onChange, onBlur, value, ref },
-    fieldState: { error },
-  } = useController({ name, control, defaultValue, rules });
-
+  
   return (
     <TextField
       {...textFieldProps}

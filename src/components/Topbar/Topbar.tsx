@@ -8,7 +8,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { AppBar } from '@/styles/customThemes';
 
-const drawerWidth = 240;
+// const drawerWidth = 240;
 
 
 interface TopBarProps {

@@ -1,9 +1,6 @@
 "use client";
 import { Column } from "@/interfaces/types";
 import {
-  Box,
-  IconButton,
-  InputAdornment,
   Paper,
   Table,
   TableBody,
@@ -14,8 +11,6 @@ import {
   TableRow,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import FormTextField from "../Inputs/formTextField";
-import { Search } from "@mui/icons-material";
 import SearchBox from "../Inputs/searchBox";
 
 interface TableProps {
