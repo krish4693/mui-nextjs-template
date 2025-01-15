@@ -33,11 +33,9 @@ interface FormValues {
 
 
 const SignUpPage = () => {
-  // const [formData, setFormData] = useState({
-  //   name: "",
-  //   email: "",
-  //   password: "",
-  // });
+   
+  
+
 
   const {
     handleSubmit,

@@ -1,6 +1,6 @@
 "use client"
 import * as React from 'react';
-import { styled} from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
@@ -15,7 +15,6 @@ const drawerWidth = 240;
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
 }
-
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',

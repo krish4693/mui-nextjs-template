@@ -31,23 +31,18 @@ interface FormValues {
 
 
 const SignUpPage = () => {
-  // const [formData, setFormData] = useState({
-  //   name: "",
-  //   email: "",
-  //   password: "",
-  // });
+    
+  
 
   // const [errors, setErrors] = useState({});
   // const [showSuccess, setShowSuccess] = useState(false);
 
-  const {
-    handleSubmit,
-    control,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    formState: { errors },
-  } = useForm<FormValues>();
-
-  // const [errors, setErrors] = useState({});
+    const {
+      handleSubmit,
+      control,
+    } = useForm<FormValues>()
+  
+    // const [errors, setErrors] = useState({});
   const [showSuccess, setShowSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
