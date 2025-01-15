@@ -1,6 +1,7 @@
 "use client";
 import { Column } from "@/interfaces/types";
 import {
+  Box,
   Paper,
   Table,
   TableBody,
@@ -12,6 +13,7 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import SearchBox from "../Inputs/searchBox";
+import Loader from "../Loader/loader";
 
 interface TableProps {
   url: string;
@@ -27,6 +29,7 @@ export default function CustomTable<T extends Record<string, unknown>>({
   const [totalRows, setTotalRows] = useState(0);
   const [tableData, setTableData] = useState<T[]>();
   const [columns, setColumns] = useState<Column<T>[]>();
+  const [loading, setLoading] = useState(false);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -38,61 +41,78 @@ export default function CustomTable<T extends Record<string, unknown>>({
     setPage(0);
   };
 
-  const fetchData = async () => {
-    const response = await fetch(url);
-    const data = await response.json();
-    setTableData(data);
-    setTotalRows(data.length);
-    setColumns([
-      { id: "id", label: "ID" },
-      { id: "name", label: "Full Name" },
-      { id: "email", label: "Email Address" },
-      { id: "username", label: "Username" },
-      { id: "phone", label: "Phone Number" },
-      { id: "website", label: "Website" },
-    ]);
-  };
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(url);
+        const data = await response.json();
+        setTableData(data);
+        setTotalRows(data.length);
+        setColumns([
+          { id: "id", label: "ID" },
+          { id: "name", label: "Full Name" },
+          { id: "email", label: "Email Address" },
+          { id: "username", label: "Username" },
+          { id: "phone", label: "Phone Number" },
+          { id: "website", label: "Website" },
+        ]);
+        setLoading(false);    
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
     fetchData();
-  });
+  },[url]);
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden", marginTop: 8 }}>
-    <SearchBox />
-      <TableContainer sx={{ height: 330 }}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              {columns?.map((column) => (
-                <TableCell key={String(column.id)}>{column.label}</TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {tableData
-              ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => (
-                <TableRow key={String(row.id)}>
+      {!loading ? (
+        <>
+        <Box sx={{ p: 2 }}>
+          <SearchBox />
+        </Box>
+          <TableContainer sx={{ height: 330 }}>
+            <Table>
+              <TableHead>
+                <TableRow>
                   {columns?.map((column) => (
                     <TableCell key={String(column.id)}>
-                      {row[column.id] as React.ReactNode}
+                      {column.label}
                     </TableCell>
                   ))}
                 </TableRow>
-              ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        component="div"
-        count={totalRows}
-        rowsPerPage={rowsPerPage}
-        rowsPerPageOptions={[5, 10]}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+              </TableHead>
+              <TableBody>
+                {tableData
+                  ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row) => (
+                    <TableRow key={String(row.id)}>
+                      {columns?.map((column) => (
+                        <TableCell key={String(column.id)}>
+                          {row[column.id] as React.ReactNode}
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <TablePagination
+            component="div"
+            count={totalRows}
+            rowsPerPage={rowsPerPage}
+            rowsPerPageOptions={[5, 10]}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </>
+      ) : (
+        <Loader />
+      )}
     </Paper>
   );
 }
