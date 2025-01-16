@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -9,6 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { AppBar } from '@/styles/customThemes';
+import { Switch } from '@mui/material';
 
 // const drawerWidth = 240;
 
@@ -22,6 +23,15 @@ interface TopBarProps {
 
 
 const TopBar: React.FC<TopBarProps> = ({ open, handleDrawerOpen }) => {
+
+  const [toggleDarkMode, setToggleDarkMode] = useState(true);
+
+
+  const toggleDarkTheme = () => {
+    setToggleDarkMode(!toggleDarkMode);
+  };
+
+
   return (
     <AppBar position="fixed" open={open}>
       <Toolbar>
@@ -43,6 +53,9 @@ const TopBar: React.FC<TopBarProps> = ({ open, handleDrawerOpen }) => {
           Persistent drawer
         </Typography>
         <Box>
+          <IconButton color="inherit">
+            <Switch checked={toggleDarkMode} onChange={toggleDarkTheme}  />
+          </IconButton>
           <IconButton color="inherit">
             <NotificationsIcon />
           </IconButton>

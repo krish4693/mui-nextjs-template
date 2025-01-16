@@ -3,10 +3,11 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   palette:{
+    mode:'dark',
     primary:{
-      main:"#fa8539",
-      // main: "#f06306",
-      light:"#ffedd3"
+      // main:"#a57e2c",
+      main: "#f06306",
+      light:"#fa8539"
 
     },
     secondary:{
