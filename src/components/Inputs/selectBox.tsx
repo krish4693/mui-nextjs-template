@@ -1,48 +1,30 @@
-import React from 'react';
-import {
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  FormHelperText,
-  SelectProps,
-} from '@mui/material';
-import { useController, UseControllerProps, FieldValues } from 'react-hook-form';
+import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { useState } from "react";
 
-interface FormSelectFieldProps<T extends FieldValues>
-  extends UseControllerProps<T>,
-    Omit<SelectProps, 'name' | 'defaultValue'> {
-  label: string;
-  options: { value: string | number; label: string }[];
-}
+interface SelectFieldProps {
+    label: string;
+    options: { value: string | number; label: string }[];
+  }
+  
+  const SelectField: React.FC<SelectFieldProps> = ({ label, options, ...selectProps }) => {
+    const [value, setValue] = useState('');
+  
+    const handleChange = (event: SelectChangeEvent<unknown>) => {
+      setValue(event.target.value as string);
+    };
+  
+    return (
+      <FormControl sx={{ minWidth: 120 }} size="small">
+        <InputLabel>{label}</InputLabel>
+        <Select value={value} onChange={handleChange} {...selectProps}>
+          {options.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    );
+  };
 
-const FormSelectField = <T extends FieldValues>({
-  name,
-  control,
-  rules,
-  defaultValue,
-  label,
-  options,
-  ...selectProps
-}: FormSelectFieldProps<T>) => {
-  const {
-    field,
-    fieldState: { error },
-  } = useController({ name, control, rules, defaultValue });
-
-  return (
-    <FormControl fullWidth margin="normal" error={!!error}>
-      <InputLabel>{label}</InputLabel>
-      <Select {...field} {...selectProps}  value={field.value ?? ''} label={label}>
-        {options.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-      </Select>
-      {error && <FormHelperText>{error.message}</FormHelperText>}
-    </FormControl>
-  );
-};
-
-export default FormSelectField;
+  export default SelectField;

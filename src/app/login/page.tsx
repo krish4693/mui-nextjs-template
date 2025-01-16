@@ -5,14 +5,12 @@ import {
   Button,
   Container,
   Typography,
-  Paper,
   Divider,
   Alert,
   Snackbar,
   InputAdornment,
   IconButton,
 } from "@mui/material";
-import { styled } from "@mui/system";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineUser } from "react-icons/ai";
 
@@ -23,36 +21,16 @@ import LogoContainer from "@/components/custom-containers/logoContainer";
 import Image from "next/image";
 import login from "../../../public/login1.png";
 import Link from "next/link";
+import { GoogleButton, StyledPaper } from "@/styles/customThemes";
 
 interface FormValues {
   email: string;
   password: string;
 }
 
-const StyledPaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(3),
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  gap: theme.spacing(2),
-  // maxWidth: "450px",
-  margin: "auto",
-  marginTop: theme.spacing(4),
-  borderRadius: "12px",
-  boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
-}));
 
-const GoogleButton = styled(Button)({
-  width: "100%",
-  padding: "12px",
-  backgroundColor: "#ffffff",
-  color: "#757575",
-  border: "1px solid #dadce0",
-  "&:hover": {
-    backgroundColor: "#f8f9fa",
-    border: "1px solid #dadce0",
-  },
-});
+
+
 
 const SignUpPage = () => {
    
@@ -191,7 +169,7 @@ const SignUpPage = () => {
                 variant="contained"
                 sx={{ mt: 3, mb: 2, py: 1.5 }}
               >
-                Sign Up
+                Sign In
               </Button>
               <Typography variant="body2" sx={{ textAlign: "center", mt: 2 }}>
                 Don&apos;t have an account?{" "}
@@ -209,7 +187,7 @@ const SignUpPage = () => {
             </Box>
           </Box>
         </Box>
-      </StyledPaper>
+      </StyledPaper>  
 
       <Snackbar
         open={showSuccess}

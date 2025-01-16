@@ -70,8 +70,26 @@ const SideDrawer: React.FC<SideDrawerProps> = ({ drawerWidth, open, handleDrawer
       <List>
         {/* Changed from static list items to include only 'Settings' for navigation */}
         <ListItem disablePadding>
-          <ListItemButton onClick={() => router.push('/settings') /* Navigate to /settings */}>
-            <ListItemIcon>
+          <ListItemButton
+            selected
+            onClick={() => router.push('/settings') /* Navigate to /settings */}
+            sx={{
+              "&.Mui-selected": {
+                bgcolor: "primary.light", 
+                // color: "white", 
+                borderRadius: 2, 
+                px: 1, 
+                mx:1, 
+              },
+              "&.Mui-selected:hover": {
+                bgcolor: "primary.main",
+              },
+              // "& .MuiListItemIcon-root": {
+              //   color: "white",
+              // },
+            }}
+          >
+            <ListItemIcon>  
               <Settings />
             </ListItemIcon>
             <ListItemText primary="Settings" />

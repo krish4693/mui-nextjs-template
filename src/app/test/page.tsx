@@ -1,5 +1,7 @@
+"use client"
+import ChartLine from "@/components/display/charts/lineChart";
 import CustomTable from "@/components/display/table";
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 
 export default function TestPage() {
     
@@ -14,11 +16,16 @@ export default function TestPage() {
   // ];
     
   return (
-      <Container maxWidth="lg" sx={{display:"flex",justifyContent:"center",alignContent:"center"}}>
+      <Container maxWidth="lg" sx={{display:"flex",justifyContent:"center",alignContent:"center", flexDirection:"column", gap:2 }}>
           <CustomTable
             //   columns={columns}
             //   data={data}
-              url='https://jsonplaceholder.typicode.com/users' />
+        url='https://jsonplaceholder.typicode.com/users'
+      />
+      <Box sx={{backgroundColor:"white", width:"100%", height:"100%"}}>
+      <ChartLine />
+
+      </Box>
      </Container>
   )
 }
