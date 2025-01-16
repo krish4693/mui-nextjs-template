@@ -8,7 +8,6 @@ export default function DateRange() {
     const [startTime, setStartTime] = useState<Dayjs | null>(null);
     const [endTime, setEndTime] = useState<Dayjs | null>(null);
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [error, setError] = useState<string | null>(null);
   
     const handleFromTimeChange = (newValue: Dayjs | null) => {

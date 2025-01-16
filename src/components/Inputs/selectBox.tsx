@@ -1,4 +1,4 @@
-import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, SelectProps } from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import { useState } from "react";
 
 interface SelectFieldProps {
