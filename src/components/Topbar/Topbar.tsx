@@ -10,6 +10,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { AppBar } from '@/styles/customThemes';
 import { Switch } from '@mui/material';
+import NightModeToggle from '../NightModeToggle';
 
 // const drawerWidth = 240;
 
@@ -53,9 +54,7 @@ const TopBar: React.FC<TopBarProps> = ({ open, handleDrawerOpen }) => {
           Persistent drawer
         </Typography>
         <Box>
-          <IconButton color="inherit">
-            <Switch checked={toggleDarkMode} onChange={toggleDarkTheme}  />
-          </IconButton>
+            <NightModeToggle/>
           <IconButton color="inherit">
             <NotificationsIcon />
           </IconButton>
