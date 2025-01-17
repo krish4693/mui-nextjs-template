@@ -1,9 +1,17 @@
 "use client"
+import ChartBar from "@/components/display/charts/barchart";
 import ChartLine from "@/components/display/charts/lineChart";
 import CustomTable from "@/components/display/table";
-import { Box, Container } from "@mui/material";
+import CustomModal from "@/components/modal/cutomModal";
+import ModalUnstyled from "@/components/modal/modal";
+import { Box, Button, Container, Typography } from "@mui/material";
+import { useState } from "react";
 
 export default function TestPage() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpen = () => setIsOpen(true);
+  const handleClose = () => setIsOpen(false);
     
   // type DataType = typeof data[number]
   // const columns: Array<{ id: keyof DataType; label: string }> = [
@@ -22,10 +30,30 @@ export default function TestPage() {
             //   data={data}
         url='https://jsonplaceholder.typicode.com/users'
       />
-      <Box sx={{backgroundColor:"white", width:"100%", height:"100%"}}>
+      <Button variant="contained" onClick={handleOpen}>
+        Open Modal
+      </Button>
+      <ChartBar />
       <ChartLine />
-
-      </Box>
+      <CustomModal
+        open={isOpen}
+        onClose={handleClose}
+        title="Example Modal"
+        actions={
+          <>
+            <Button onClick={handleClose}>Cancel</Button>
+            <Button variant="contained" onClick={handleClose}>
+              Confirm
+            </Button>
+          </>
+        }
+        maxWidth="md"
+      >
+        <Typography variant="body1">
+          This is a reusable modal component with customizable content and
+          actions.
+        </Typography>
+      </CustomModal>
      </Container>
   )
 }
