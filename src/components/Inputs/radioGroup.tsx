@@ -22,11 +22,12 @@ const RadioButtons = <T extends FieldValues>({
   rules,
   label,
   options,
+  defaultValue,
 }: RadioGroupProps<T>) => {
   const {
     field,
     fieldState: { error },
-  } = useController({ name, control, rules, defaultValue });
+  } = useController({ name, control, rules,defaultValue });
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [value, setValue] = React.useState("female");
 
