@@ -1,10 +1,11 @@
 "use client"
 import ChartBar from "@/components/display/charts/barchart";
 import ChartLine from "@/components/display/charts/lineChart";
+import ChartPie from "@/components/display/charts/piechart";
 import CustomTable from "@/components/display/table";
 import CustomModal from "@/components/modal/cutomModal";
-import ModalUnstyled from "@/components/modal/modal";
-import { Box, Button, Container, Typography } from "@mui/material";
+import StepProgress from "@/components/stepper/stepper";
+import { Button, Container, Typography } from "@mui/material";
 import { useState } from "react";
 
 export default function TestPage() {
@@ -24,7 +25,7 @@ export default function TestPage() {
   // ];
     
   return (
-      <Container maxWidth="lg" sx={{display:"flex",justifyContent:"center",alignContent:"center", flexDirection:"column", gap:2 }}>
+      <Container maxWidth="lg" sx={{display:"flex",justifyContent:"center",alignContent:"center", flexDirection:"column", gap:1 ,marginBottom:1}}>
           <CustomTable
             //   columns={columns}
             //   data={data}
@@ -33,8 +34,10 @@ export default function TestPage() {
       <Button variant="contained" onClick={handleOpen}>
         Open Modal
       </Button>
+      <StepProgress />
       <ChartBar />
       <ChartLine />
+      <ChartPie />
       <CustomModal
         open={isOpen}
         onClose={handleClose}
@@ -47,7 +50,7 @@ export default function TestPage() {
             </Button>
           </>
         }
-        maxWidth="md"
+        maxWidth="sm"
       >
         <Typography variant="body1">
           This is a reusable modal component with customizable content and

@@ -76,7 +76,7 @@ export default function CustomTable<T extends Record<string, unknown>>({
   }, [url]);
 
   return (
-    <Paper sx={{ width: "100%", overflow: "hidden", marginTop: 8 }}>
+    <Paper sx={{ width: "100%", overflow: "hidden", marginTop: 4 }}>
       {!loading ? (
         <>
           <Box sx={{ display: "flex", m:2,gap:1}}>
