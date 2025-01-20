@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -13,7 +13,6 @@ import { useColorScheme } from '@mui/material/styles';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { Tooltip } from '@mui/material';
-import { GrTooltip } from 'react-icons/gr';
 
 // const drawerWidth = 240;
 
