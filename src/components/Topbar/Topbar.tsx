@@ -3,13 +3,18 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import { styled } from '@mui/material/styles';
+// import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+// import { styled } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import { AppBar } from '@/styles/customThemes';
+import { useColorScheme } from '@mui/material/styles';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import { Tooltip } from '@mui/material';
 
-const drawerWidth = 240;
+// const drawerWidth = 240;
 
 
 interface TopBarProps {
@@ -17,33 +22,25 @@ interface TopBarProps {
   handleDrawerOpen: () => void;
 }
 
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
 
-const AppBar = styled(MuiAppBar, {
-    shouldForwardProp: (prop) => prop !== 'open',
-  })<AppBarProps>(({ theme }) => ({
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    variants: [
-      {
-        props: ({ open }) => open,
-        style: {
-          width: `calc(100% - ${drawerWidth}px)`,
-          marginLeft: `${drawerWidth}px`,
-          transition: theme.transitions.create(['margin', 'width'], {
-            easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen,
-          }),
-        },
-      },
-    ],
-  }));
+
 
 const TopBar: React.FC<TopBarProps> = ({ open, handleDrawerOpen }) => {
+
+
+  const { mode, systemMode, setMode } = useColorScheme();
+
+
+  const toggleDarkTheme = React.useCallback(
+    () => {
+      if (mode) {
+        const currMode = mode === 'dark' ? 'light' : 'dark';
+        setMode(currMode);
+      }
+    },
+    [mode, systemMode],
+  )
+
   return (
     <AppBar position="fixed" open={open}>
       <Toolbar>
@@ -65,6 +62,11 @@ const TopBar: React.FC<TopBarProps> = ({ open, handleDrawerOpen }) => {
           Persistent drawer
         </Typography>
         <Box>
+          <Tooltip title="Toggle Theme">
+          <IconButton color="inherit" onClick={() => toggleDarkTheme()}>
+            {mode === 'dark' ? <LightModeIcon onClick={toggleDarkTheme} /> : <DarkModeIcon onClick={toggleDarkTheme} />}
+          </IconButton>
+          </Tooltip>
           <IconButton color="inherit">
             <NotificationsIcon />
           </IconButton>

@@ -5,14 +5,12 @@ import {
   Button,
   Container,
   Typography,
-  Paper,
   Divider,
   Alert,
   Snackbar,
   InputAdornment,
   IconButton,
 } from "@mui/material";
-import { styled } from "@mui/system";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineUser } from "react-icons/ai";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -22,6 +20,7 @@ import LogoContainer from "@/components/custom-containers/logoContainer";
 import Image from "next/image";
 import login from "../../../public/login1.png";
 import Link from "next/link";
+import { GoogleButton, StyledPaper } from "@/styles/customThemes";
 
 interface FormValues {
   name: string;
@@ -30,47 +29,6 @@ interface FormValues {
   test_file: string;
 }
 
-const StyledPaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(3),
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  gap: theme.spacing(2),
-  // maxWidth: "450px",
-  margin: "auto",
-  marginTop: theme.spacing(4),
-  borderRadius: "16px",
-  boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
-}));
-
-// const LogoContainer = styled(Box)({
-//   width: "100%",
-//   display: "flex",
-//   justifyContent: "center",
-//   marginBottom: "1rem"
-// });
-
-// const Logo = styled(Box)({
-//   width: "64px",
-//   height: "64px",
-//   backgroundColor: "#f5f5f5",
-//   borderRadius: "50%",
-//   display: "flex",
-//   alignItems: "center",
-//   justifyContent: "center"
-// });
-
-const GoogleButton = styled(Button)({
-  width: "100%",
-  padding: "12px",
-  backgroundColor: "#ffffff",
-  color: "#757575",
-  border: "1px solid #dadce0",
-  "&:hover": {
-    backgroundColor: "#f8f9fa",
-    border: "1px solid #dadce0",
-  },
-});
 
 const SignUpPage = () => {
     
@@ -87,7 +45,6 @@ const SignUpPage = () => {
     // const [errors, setErrors] = useState({});
   const [showSuccess, setShowSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
@@ -95,34 +52,6 @@ const SignUpPage = () => {
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log("Form Data:", data);
   };
-
-  // const validateForm = () => {
-  //   const newErrors = {};
-  //   if (!formData.name) newErrors.name = "Name is required";
-  //   if (!formData.email) {
-  //     newErrors.email = "Email is required";
-  //   } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-  //     newErrors.email = "Email is invalid";
-  //   }
-  //   if (!formData.password) {
-  //     newErrors.password = "Password is required";
-  //   } else if (formData.password.length < 6) {
-  //     newErrors.password = "Password must be at least 6 characters";
-  //   }
-  //   return newErrors;
-  // };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const newErrors = validateForm();
-  //   if (Object.keys(newErrors).length === 0) {
-  //     setShowSuccess(true);
-  //     setFormData({ name: "", email: "", password: "" });
-  //     setErrors({});
-  //   } else {
-  //     setErrors(newErrors);
-  //   }
-  // };
 
   // const handleGoogleSignUp = () => {
   //   setShowSuccess(true);
@@ -246,18 +175,20 @@ const SignUpPage = () => {
                 label="Password"
                 variant="outlined"
                 rules={{ required: "password is required" }}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        onClick={handleTogglePasswordVisibility}
-                        edge="end"
-                        aria-label="toggle password visibility"
-                      >
-                        {showPassword ? <Visibility /> : <VisibilityOff />}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
+                slotProps={{
+                  input: {
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          onClick={handleTogglePasswordVisibility}
+                          edge="end"
+                          aria-label="toggle password visibility"
+                        >
+                          {showPassword ? <Visibility /> : <VisibilityOff />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  },
                 }}
               />
 

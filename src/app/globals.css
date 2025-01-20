@@ -1,6 +1,9 @@
-@tailwind base;
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
 @tailwind components;
+@tailwind base;
 @tailwind utilities;
+
 
 :root {
   --background: #ffffff;
@@ -19,3 +22,5 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
