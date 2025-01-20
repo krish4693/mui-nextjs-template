@@ -4,6 +4,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import { useState } from "react";
 import {
   FieldValues,
   useController,
@@ -27,7 +28,9 @@ const RadioButtons = <T extends FieldValues>({
   const {
     field,
     fieldState: { error },
+
   } = useController({ name, control, rules,defaultValue });
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [value, setValue] = React.useState("female");
 
