@@ -3,11 +3,14 @@ import { Geist, Geist_Mono } from "next/font/google"; // Ensure these fonts are 
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import "./globals.css";
 import { Roboto } from "next/font/google";
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "../theme/theme";
-import { GlobalStyles } from "@mui/material";
-import { globalStyles } from "@/styles/globalStyles";
-import { ThemeContextProvider } from "@/theme/ThemeContextProvider";
+import InitColorSchemeScript from "@mui/material/InitColorSchemeScript";
+//imported roboto font
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import AppThemeProvider from "@/context/AppThemeContext";
+
 
 // Fonts section
 const roboto = Roboto({
@@ -40,22 +43,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable}`}
       >
-        {/* Cache provider for MUI in Next.js App Router */}
-        <AppRouterCacheProvider>
-          {/* Theme context provider for dynamic theme handling */}
-          <ThemeContextProvider>
-            {/* MUI ThemeProvider for global theming */}
-            <ThemeProvider theme={theme}>
-              {/* Global CSS styles */}
-              <GlobalStyles styles={globalStyles} />
-              {/* Render children */}
-              {children}
-            </ThemeProvider>
-          </ThemeContextProvider>
+        <AppRouterCacheProvider options={{ enableCssLayer: false }}>
+          <AppThemeProvider>
+            <InitColorSchemeScript  attribute="class" />
+            {children}
+          </AppThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>
