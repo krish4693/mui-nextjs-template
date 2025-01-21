@@ -37,7 +37,7 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 export default function PersistentDrawerLeft({
-  children, // Added the `children` prop to accept dynamic content.
+  children, 
 }: React.PropsWithChildren) {
   const [open, setOpen] = React.useState(true);
 

@@ -32,13 +32,13 @@
 
   const SideDrawer: React.FC<SideDrawerProps> = ({ drawerWidth, open, handleDrawerClose }) => {
     const theme = useTheme();
-    const router = useRouter(); // Initialize Next.js router
+    const router = useRouter(); 
 
     // Drawer items array
     const drawerItems = [
-      { text: 'Dashboard', icon: <Dashboard />, path: '/dashboard' }, // Update the path for logout action
+      { text: 'Dashboard', icon: <Dashboard />, path: '/dashboard' }, 
       { text: 'Settings', icon: <Settings />, path: '/dashboard/settings' },
-      { text: 'Logout', icon: <Logout />, path: '/login' }, // Update the path for logout action
+      { text: 'Logout', icon: <Logout />, path: '/login' }, 
     ];
 
     return (
@@ -71,7 +71,7 @@
           {drawerItems.map((item, index) => (
             <ListItem key={index} disablePadding>
               <ListItemButton
-                onClick={() => router.push(item.path)} // Navigate to the item's path
+                onClick={() => router.push(item.path)} 
                 sx={{
                   "&.Mui-selected": {
                     bgcolor: "primary.light",
