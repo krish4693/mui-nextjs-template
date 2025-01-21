@@ -103,5 +103,5 @@ export const Logo = styled(Box, {
     borderRadius: "50%",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
   }));
