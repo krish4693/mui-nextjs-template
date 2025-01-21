@@ -32,20 +32,20 @@ const RadioButtons = <T extends FieldValues>({
     fieldState: { error },
   } = useController({ name, control, rules, defaultValue });
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [value, setValue] = React.useState("female");
+  // const [value, setValue] = React.useState("female");
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue((event.target as HTMLInputElement).value);
-  };
+  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setValue((event.target as HTMLInputElement).value);
+  // };
 
   return (
     <FormControl fullWidth margin="normal">
-      <FormLabel id="demo-controlled-radio-buttons-group">{label}</FormLabel>
+      <FormLabel id="radio-group-label">{label}</FormLabel>
       <RadioGroup
         {...field}
-        value={field.value ?? ""}
-        onChange={handleChange}
+        // value={field.value ?? ""}
+        aria-labelledby="radio-group-label"
+        // onChange={handleChange}
         {...radioGroupProps}
       >
         {options.map((option) => (
@@ -54,6 +54,15 @@ const RadioButtons = <T extends FieldValues>({
             value={option.value}
             label={option.label}
             control={<Radio />}
+            sx={{
+              border: "1px solid #ccc",
+              borderRadius: 2,
+              p: 1,
+              my:2,
+              marginLeft: 0, // Reset default margin
+              marginRight: 0, // Reset default margin
+            }}
+ 
           />
         ))}
         {/* <FormControlLabel value="female" control={<Radio />} label="Female" />

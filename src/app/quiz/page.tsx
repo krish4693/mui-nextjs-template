@@ -58,7 +58,7 @@ export default function page() {
         sx={{
           display: "grid",
           gridTemplateColumns: "repeat(2, 1fr)", // 2 columns
-          gap: 2, // Add spacing between items
+          gap: 1, // Add spacing between items
         }}
       />
       <Button variant="contained" type="submit">Submit</Button>
