@@ -37,7 +37,7 @@
     // Drawer items array
     const drawerItems = [
       { text: 'Dashboard', icon: <Dashboard />, path: '/dashboard' }, // Update the path for logout action
-      { text: 'Settings', icon: <Settings />, path: '/settings' },
+      { text: 'Settings', icon: <Settings />, path: '/dashboard/settings' },
       { text: 'Logout', icon: <Logout />, path: '/login' }, // Update the path for logout action
     ];
 
