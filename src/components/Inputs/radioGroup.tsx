@@ -1,6 +1,6 @@
 import * as React from "react";
 import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
+import { RadioGroup, RadioGroupProps } from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
@@ -11,7 +11,9 @@ import {
 } from "react-hook-form";
 import { FormHelperText } from "@mui/material";
 
-interface RadioGroupProps<T extends FieldValues> extends UseControllerProps<T> {
+interface FormRadioGroupProps<T extends FieldValues>
+  extends UseControllerProps<T>,
+    Omit<RadioGroupProps, "name" | "defaultValue"> {
   label: string;
   options: { value: string | number; label: string }[];
 }
@@ -23,12 +25,12 @@ const RadioButtons = <T extends FieldValues>({
   label,
   options,
   defaultValue,
-}: RadioGroupProps<T>) => {
+  ...radioGroupProps
+}: FormRadioGroupProps<T>) => {
   const {
     field,
     fieldState: { error },
-
-  } = useController({ name, control, rules,defaultValue });
+  } = useController({ name, control, rules, defaultValue });
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [value, setValue] = React.useState("female");
@@ -38,9 +40,14 @@ const RadioButtons = <T extends FieldValues>({
   };
 
   return (
-    <FormControl>
+    <FormControl fullWidth margin="normal">
       <FormLabel id="demo-controlled-radio-buttons-group">{label}</FormLabel>
-      <RadioGroup {...field} value={field.value ?? ""} onChange={handleChange}>
+      <RadioGroup
+        {...field}
+        value={field.value ?? ""}
+        onChange={handleChange}
+        {...radioGroupProps}
+      >
         {options.map((option) => (
           <FormControlLabel
             key={option.value}
