@@ -1,6 +1,9 @@
 "use client"
 import React from 'react';
-import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+
+import { styled, useTheme, Theme, CSSObject, useColorScheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
@@ -18,6 +21,10 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Dashboard, Settings, Logout } from '@mui/icons-material';
 import { useRouter } from 'next/navigation'; // Next.js router for navigation
+import { Tooltip } from '@mui/material';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+
 
 const drawerWidth = 240;
 
@@ -94,6 +101,18 @@ interface MiniDrawerProps {
 }
 
 const MiniDrawer: React.FC<MiniDrawerProps> = ({ children }) => {
+  const { mode, systemMode, setMode } = useColorScheme();
+
+
+  const toggleDarkTheme = React.useCallback(
+    () => {
+      if (mode) {
+        const currMode = mode === 'dark' ? 'light' : 'dark';
+        setMode(currMode);
+      }
+    },
+    [mode, systemMode],
+  )
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const router = useRouter();
@@ -124,10 +143,24 @@ const MiniDrawer: React.FC<MiniDrawerProps> = ({ children }) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div"  sx={{ flexGrow: 1 }}>
             Mini Drawer
           </Typography>
+          <Box>
+            <Tooltip title="Toggle Theme">
+              <IconButton color="inherit" onClick={() => toggleDarkTheme()}>
+                {mode === 'dark' ? <LightModeIcon onClick={toggleDarkTheme} /> : <DarkModeIcon onClick={toggleDarkTheme} />}
+              </IconButton>
+            </Tooltip>
+            <IconButton color="inherit">
+              <NotificationsIcon />
+            </IconButton>
+            <IconButton color="inherit">
+              <AccountCircle />
+            </IconButton>
+          </Box>
         </Toolbar>
+
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
