@@ -9,12 +9,13 @@ import {
   SubmitHandler,
   useForm,
   Controller,
+  useFieldArray,
 } from "react-hook-form";
 
 interface OptionType {
   id: number;
   label: string;
-  value: string;
+  value: string | number;
 }
 
 interface FormValues {
@@ -25,19 +26,22 @@ interface FormValues {
 }
 
 export default function Page() {
-  const { handleSubmit, control, setValue, watch } = useForm<FormValues>({
+  const { handleSubmit, control, setValue, watch,getValues } = useForm<FormValues>({
     defaultValues: {
       question: "",
-      options: [],
+      options: [
+        { id: 1, label: 'Option 1', value: ''},
+        { id: 2, label: 'Option 2', value: ''},
+        { id: 3, label: 'Option 3', value: ''},
+        { id: 4, label: 'Option 4', value: ''}
+      ],
+      correctAnswer: "",
     },
   });
-  const [checked, setChecked] = useState(true);
-
   const options = watch("options");
-  const correctAnswer = watch("correctAnswer");
 
   const handleAddOption = () => {
-    const newOptionId = options.length + 1;
+    const newOptionId = options.length+1;
     const newOption: OptionType = {
       id: newOptionId,
       label: `Option ${newOptionId}`,
@@ -46,13 +50,14 @@ export default function Page() {
     setValue("options", [...options, newOption]);
   };
 
-  const handleSetCorrectAnswer = (optionId: number) => {
-    setValue("correctAnswer", `option-${optionId}`);
-  };
+  const [selectedOption, setSelectedOption] = useState<number>();
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.checked);
+  const handleCheckboxChange = (index:number) => {
+    setSelectedOption(index);
   };
+  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setChecked(event.target.checked);
+  // };
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log("Form Data:", data);
   };
@@ -79,20 +84,31 @@ export default function Page() {
           gap: 2,
         }}
       >
-        {options.map((option, index) => (
-          <Box>
-            <Checkbox
-              checked={checked}
-              onChange={handleChange}
-              color="success"
-              inputProps={{ "aria-label": "controlled" }}
-            />
-            <FormTextField
-              name={`options.${index}.value`}
-              control={control}
-              label={`Option ${index + 1}`}
-              variant="standard"
-            />
+        {options?.map((option, index) => (
+          <Box
+            sx={{ display: "flex", alignItems: "center", gap: 1 }}
+            key={option.id}
+          >
+          <Controller
+            name="correctAnswer"
+            control={control}
+            render={({ field }) => (
+              <Checkbox
+                checked={selectedOption === index}
+                onChange={() => {
+                  handleCheckboxChange(index);
+                  field.onChange(index+1); // Update form value
+                }}
+                color="success"
+              />
+            )}
+          />
+          <FormTextField
+            name={`options.${index}.value`}
+            control={control}
+            label={`Option ${index + 1}`}
+            variant="standard"
+          />
           </Box>
         ))}
       </Box>
