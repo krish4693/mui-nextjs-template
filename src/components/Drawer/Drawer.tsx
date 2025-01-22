@@ -24,6 +24,10 @@ import { useRouter } from 'next/navigation'; // Next.js router for navigation
 import { Tooltip } from '@mui/material';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LogoContainer from '../custom-containers/logoContainer';
+import Image from 'next/image';
+import logo from '../../../public/social.png';
+
 
 
 const drawerWidth = 240;
@@ -164,6 +168,12 @@ const MiniDrawer: React.FC<MiniDrawerProps> = ({ children }) => {
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
+        <LogoContainer
+            renderItem={() => (
+              <Image src={logo} alt="logo" height={32} width={32} />
+            )}
+            containerStyle={{ justifyContent: 'flex-start' }}
+          />
           <IconButton onClick={toggleDrawer}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
