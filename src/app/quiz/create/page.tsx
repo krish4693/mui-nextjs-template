@@ -14,7 +14,7 @@ import { DeleteOutlineOutlined } from "@mui/icons-material";
 
 interface OptionType {
   id: number;
-  label: string;
+  // label: string; 
   value: string | number;
 }
 
@@ -27,52 +27,55 @@ interface FormValues {
 
 export default function Page() {
   const { handleSubmit, control, setValue, watch, getValues } =
-    useForm<FormValues>({
-      defaultValues: {
-        question: "",
-        options: [
-          { id: 1, label: "Option 1", value: "" },
-          { id: 2, label: "Option 2", value: "" },
-          { id: 3, label: "Option 3", value: "" },
-          { id: 4, label: "Option 4", value: "" },
-        ],
-        correctOption: 0,
-      },
-    });
-  const options = watch("options");
+      useForm<FormValues>({
+        defaultValues: {
+          question: "",
+          options: [
+            { id: 1, value: "" },
+            { id: 2, value: "" },
+            { id: 3, value: "" },
+            { id: 4, value: "" },
+          ],
+          correctOption: 0,
+        },
+      });
+    const options = watch("options");
 
-  const handleAddOption = () => {
-    const newOptionId = options.length + 1;
-    const newOption: OptionType = {
-      id: newOptionId,
-      label: `Option ${newOptionId}`,
-      value: "",
+    const handleAddOption = () => {
+      const maxId = options.reduce((max, option) => Math.max(max, option.id), 0);
+
+      // Assign a new id that is unique
+      const newOptionId = maxId + 1;
+    
+      const newOption: OptionType = {
+        id: newOptionId,
+        value: "",
+      };
+      setValue("options", [...options, newOption]);
     };
-    setValue("options", [...options, newOption]);
-  };
 
-  const [selectedOption, setSelectedOption] = useState<number>();
+    const [selectedOption, setSelectedOption] = useState<number>();
 
-  const handleCheckboxChange = (index: number) => {
-    setSelectedOption(index);
-  };
-  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setChecked(event.target.checked);
-  // };
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log("Form Data:", data);
-  };
-  const handleDeleteOption = (index: number) => {
-    const currentOptions = getValues("options");
+    const handleCheckboxChange = (index: number) => {
+      setSelectedOption(index);
+    };
+    // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    //   setChecked(event.target.checked);
+    // };
+    const onSubmit: SubmitHandler<FormValues> = (data) => {
+      console.log("Form Data:", data);
+    };
+    const handleDeleteOption = (index: number) => {
+      const currentOptions = getValues("options");
 
-    const updatedOptions = currentOptions.filter((_, i) => i !== index);
-    setValue("options", updatedOptions);
+      const updatedOptions = currentOptions.filter((_, i) => i !== index);
+      setValue("options", updatedOptions);
 
-    // Optional: Reset "correctOption" if the selected option is deleted
-    if (getValues("correctOption") === index + 1) {
-      setValue("correctOption", 0);
-    }
-  };
+      // Optional: Reset "correctOption" if the selected option is deleted
+      if (getValues("correctOption") === index + 1) {
+        setValue("correctOption", 0);
+      }
+    };
 
   return (
     <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ m: 2 }}>
