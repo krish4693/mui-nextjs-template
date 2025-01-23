@@ -43,7 +43,8 @@ const AppThemeProvider = (props: AppThemeProviderProps) => {
           dark: {
             palette: {
               primary: {
-                main: "rgb(10,18,42)",
+                main: "rgb(255, 119, 51)",
+                contrastText: "rgb(255,255,255)",
               },
             },
           },
