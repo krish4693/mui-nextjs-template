@@ -1,23 +1,17 @@
 "use client";
 
-import FormRadio from "@/components/Inputs/formRadio";
 import FormTextField from "@/components/Inputs/formTextField";
 import {
   Box,
   Button,
   Checkbox,
   FormHelperText,
-  Paper,
-  Radio,
+  IconButton,
 } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import React, { useState } from "react";
-import {
-  FieldValues,
-  SubmitHandler,
-  useForm,
-  Controller,
-  useFieldArray,
-} from "react-hook-form";
+import { SubmitHandler, useForm, Controller } from "react-hook-form";
+import { DeleteOutlineOutlined } from "@mui/icons-material";
 
 interface OptionType {
   id: number;
@@ -69,6 +63,17 @@ export default function Page() {
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log("Form Data:", data);
   };
+  const handleDeleteOption = (index: number) => {
+    const currentOptions = getValues("options");
+
+    const updatedOptions = currentOptions.filter((_, i) => i !== index);
+    setValue("options", updatedOptions);
+
+    // Optional: Reset "correctOption" if the selected option is deleted
+    if (getValues("correctOption") === index + 1) {
+      setValue("correctOption", 0);
+    }
+  };
 
   return (
     <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ m: 2 }}>
@@ -119,6 +124,7 @@ export default function Page() {
               control={control}
               render={({ field }) => (
                 <Checkbox
+                  sx={{ mt: 4 }}
                   checked={selectedOption === index}
                   onChange={() => {
                     handleCheckboxChange(index);
@@ -128,13 +134,23 @@ export default function Page() {
                 />
               )}
             />
-            <FormTextField
-              name={`options.${index}.value`}
-              control={control}
-              label={`Option ${index + 1}`}
-              variant="standard"
-              rules={{ required: "Answer is required" }}
-            />
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+              <FormTextField
+                name={`options.${index}.value`}
+                control={control}
+                label={`Option ${index + 1}`}
+                variant="standard"
+                rules={{ required: "Answer is required" }}
+              />
+              <IconButton
+                sx={{ mt: 4 }}
+                aria-label="delete"
+                color="error"
+                onClick={() => handleDeleteOption(index)} // Add this function to handle deletion
+              >
+                <DeleteOutlineOutlined />
+              </IconButton>
+            </Box>
           </Box>
         ))}
       </Box>
