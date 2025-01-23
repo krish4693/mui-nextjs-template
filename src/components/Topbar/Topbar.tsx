@@ -8,9 +8,10 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { AppBar } from '@/styles/customThemes';
 import { useColorScheme } from '@mui/material/styles';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import LightModeIcon from '@mui/icons-material/LightMode';
 import { Tooltip } from '@mui/material';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+
 
 // const drawerWidth = 240;
 
@@ -61,9 +62,9 @@ const TopBar: React.FC<TopBarProps> = ({ open, handleDrawerOpen }) => {
         </Typography>
         <Box>
           <Tooltip title="Toggle Theme">
-          <IconButton color="inherit" onClick={() => toggleDarkTheme()}>
-            {mode === 'dark' ? <LightModeIcon onClick={toggleDarkTheme} /> : <DarkModeIcon onClick={toggleDarkTheme} />}
-          </IconButton>
+            <IconButton color="inherit" onClick={() => toggleDarkTheme()}>
+              {mode === 'dark' ? <LightModeIcon onClick={toggleDarkTheme} /> : <DarkModeIcon onClick={toggleDarkTheme} />}
+            </IconButton>
           </Tooltip>
           <IconButton color="inherit">
             <NotificationsIcon />
