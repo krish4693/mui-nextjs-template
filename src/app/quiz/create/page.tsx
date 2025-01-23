@@ -84,23 +84,22 @@ export default function Page() {
         margin="normal"
         rules={{ required: "Question is required" }}
       />
-              <Controller
-          name="correctOption"
-          control={control}
-          rules={{
-            validate: (value) =>
-              value !== 0 || "Please select a correct option",
-          }}
-          render={({ fieldState: { error } }) => (
-            <>
-              {error && (
-                <FormHelperText error sx={{ my: 2 }}>
-                  {error.message}
-                </FormHelperText>
-              )}
-            </>
-          )}
-        />
+      <Controller
+        name="correctOption"
+        control={control}
+        rules={{
+          validate: (value) => value !== 0 || "Please select a correct option",
+        }}
+        render={({ fieldState: { error } }) => (
+          <>
+            {error && (
+              <FormHelperText error sx={{ my: 2 }}>
+                {error.message}
+              </FormHelperText>
+            )}
+          </>
+        )}
+      />
       {/* Options List */}
       <Box
         sx={{
