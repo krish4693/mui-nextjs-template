@@ -1,15 +1,11 @@
 "use client";
-import FormTextField from "@/components/Inputs/formTextField";
 import { Box, Button, Checkbox, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 export default function page() {
   const {
-    handleSubmit,
     control,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    formState: { errors },
   } = useForm();
   const options = [
     { id: 1, value: "option1", label: "Option 1" },

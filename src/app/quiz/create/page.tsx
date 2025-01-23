@@ -8,7 +8,6 @@ import {
   FormHelperText,
   IconButton,
 } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
 import React, { useState } from "react";
 import { SubmitHandler, useForm, Controller } from "react-hook-form";
 import { DeleteOutlineOutlined } from "@mui/icons-material";

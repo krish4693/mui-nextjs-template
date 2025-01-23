@@ -1,8 +1,6 @@
 "use client"
 import ChartLine from "@/components/display/charts/lineChart";
 import CustomTable from "@/components/display/table";
-import CheckboxesGroup from "@/components/Inputs/formCheckbox";
-import { Check } from "@mui/icons-material";
 import { Box, Container } from "@mui/material";
 
 export default function TestPage() {
