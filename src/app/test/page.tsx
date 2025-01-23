@@ -14,6 +14,8 @@ export default function TestPage() {
   //   { id: 'status', label: 'Status'},
   //   { id: 'joinDate', label: 'Join Date'}
   // ];
+
+  
     
   return (
       <Container maxWidth="lg" sx={{display:"flex",justifyContent:"center",alignContent:"center", flexDirection:"column", gap:2 }}>
@@ -22,8 +24,9 @@ export default function TestPage() {
             //   data={data}
         url='https://jsonplaceholder.typicode.com/users'
       />
-      <Box sx={{backgroundColor:"white", width:"100%", height:"100%"}}>
+      <Box sx={{ width:"100%", height:"100%"}}>
       <ChartLine />
+
 
       </Box>
      </Container>
