@@ -3,7 +3,8 @@ import Box from "@mui/material/Box";
 import { BarChart } from "@mui/x-charts/BarChart";
 
 export default function ChartBar() {
-  const [skipAnimation] = React.useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [skipAnimation, setSkipAnimation] = React.useState(false);
 
   return (
     <Box sx={{ width: "100%",backgroundColor:"white" }}>
@@ -16,7 +17,10 @@ export default function ChartBar() {
   );
 }
 
-
+// const highlightScope = {
+//   highlight: "series",
+//   fade: "global",
+// } as const;
 
 const testSeries = [
   {

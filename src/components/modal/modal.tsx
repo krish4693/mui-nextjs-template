@@ -1,8 +1,12 @@
-import * as React from 'react';
-import { Modal, ModalContent, StyledBackdrop, TriggerButton } from '@/styles/ModalThemes';
-0
+import * as React from "react";
+import {
+  Modal,
+  ModalContent,
+  StyledBackdrop,
+  TriggerButton,
+} from "@/styles/ModalThemes";
 
-interface ModalProps{
+interface ModalProps {
   width?: number;
   fullWidth?: boolean;
   content: React.ReactNode;
@@ -11,7 +15,8 @@ interface ModalProps{
 export default function ModalUnstyled({
   width = 400,
   fullWidth = false,
-}) {
+  content,
+}: ModalProps) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -27,25 +32,24 @@ export default function ModalUnstyled({
         open={open}
         onClose={handleClose}
         slots={{ backdrop: StyledBackdrop }}
+        fullWidth={fullWidth}
       >
-        <ModalContent sx={{ width: 400 }}>
-          <h2 id="unstyled-modal-title" className="modal-title">
-            Text in a modal
-          </h2>
-          <p id="unstyled-modal-description" className="hover:text-blue-500">
-            Aliquid amet deserunt earum!
-          </p>
+        <ModalContent sx={{width}}>
+          {content ?? (
+            <>
+              <h2 id="unstyled-modal-title" className="modal-title">
+                Text in a modal
+              </h2>
+              <p
+                id="unstyled-modal-description"
+                className="hover:text-blue-500"
+              >
+                Aliquid amet deserunt earum!
+              </p>
+            </>
+          )}
         </ModalContent>
       </Modal>
     </div>
   );
 }
-
-
-
-
-
-
-
- 
-

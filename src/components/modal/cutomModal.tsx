@@ -4,9 +4,7 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  Button,
   IconButton,
-  Box,
   SxProps,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
