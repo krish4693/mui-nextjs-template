@@ -1,3 +1,3 @@
-export default function l̀git oading(){
+export default function Loading(){
     return <p>Loading....</p>
 }
