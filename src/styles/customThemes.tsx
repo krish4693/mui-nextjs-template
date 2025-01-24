@@ -104,7 +104,8 @@ export const Logo = styled(Box, {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-  }));
+    }));
+  
 
 
 export const Quiz = styled(Box)(() => ({
