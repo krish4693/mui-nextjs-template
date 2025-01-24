@@ -1,6 +1,6 @@
 import * as React from "react";
     import { PieChart, pieArcLabelClasses } from "@mui/x-charts/PieChart";
-    import { Box } from "@mui/material";
+    import { Box, Paper } from "@mui/material";
 
     export default function ChartPie() {
     const desktopOS = [
@@ -37,7 +37,7 @@ import * as React from "react";
     valueFormatter,
   };
   return (
-    <Box sx={{backgroundColor: "white"}}>
+    <Paper>
       <PieChart
         series={[
           {
@@ -54,6 +54,6 @@ import * as React from "react";
         }}
         {...size}
       />
-    </Box>
+    </Paper>
   );
 }

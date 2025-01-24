@@ -1,9 +1,9 @@
-import { Box } from "@mui/material";
+import {Paper } from "@mui/material";
 import { LineChart } from "@mui/x-charts";
 
 export default function ChartLine() {
   return (
-    <Box sx={{ backgroundColor: "white", width: "100%" }}>
+    <Paper sx={{width: "100%" }}>
       <LineChart
         // disableLineItemHighlight
         xAxis={[{ data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }]}
@@ -17,6 +17,6 @@ export default function ChartLine() {
         height={300}
         // grid={{ vertical: true, horizontal: true }}
       />
-    </Box>
+    </Paper>
   );
 }
