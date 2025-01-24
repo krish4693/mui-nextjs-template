@@ -1,6 +1,5 @@
 import * as React from "react";
-import Radio from "@mui/material/Radio";
-import { RadioGroup, RadioGroupProps } from "@mui/material";
+import { Radio, RadioProps } from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
@@ -13,17 +12,17 @@ import { FormHelperText } from "@mui/material";
 
 interface FormRadioGroupProps<T extends FieldValues>
   extends UseControllerProps<T>,
-    Omit<RadioGroupProps, "name" | "defaultValue"> {
-  label: string;
-  options: { value: string | number; label: string }[];
+    Omit<RadioProps, "name" | "defaultValue"> {
+  label?: string;
+  option: { value: string | number; label: string };
 }
 
-const RadioButtons = <T extends FieldValues>({
+const FormRadio = <T extends FieldValues>({
   name,
   control,
   rules,
   label,
-  options,
+  option,
   defaultValue,
   ...radioGroupProps
 }: FormRadioGroupProps<T>) => {
@@ -39,16 +38,14 @@ const RadioButtons = <T extends FieldValues>({
   // };
 
   return (
-    <FormControl fullWidth margin="normal">
+    <FormControl margin="normal">
       <FormLabel id="radio-group-label">{label}</FormLabel>
-      <RadioGroup
+      <Radio
         {...field}
         // value={field.value ?? ""}
-        aria-labelledby="radio-group-label"
         // onChange={handleChange}
         {...radioGroupProps}
       >
-        {options.map((option) => (
           <FormControlLabel
             key={option.value}
             value={option.value}
@@ -64,13 +61,12 @@ const RadioButtons = <T extends FieldValues>({
             }}
  
           />
-        ))}
         {/* <FormControlLabel value="female" control={<Radio />} label="Female" />
         <FormControlLabel value="male" control={<Radio />} label="Male" /> */}
-      </RadioGroup>
+      </Radio>
       {error && <FormHelperText>{error.message}</FormHelperText>}
     </FormControl>
   );
 };
 
-export default RadioButtons;
+export default FormRadio;

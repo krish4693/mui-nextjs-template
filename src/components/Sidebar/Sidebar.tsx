@@ -58,8 +58,9 @@
         <DrawerHeader>
           <LogoContainer
             renderItem={() => (
-              <Image src={logo} alt="logo" height={32} width={32} />
+              <Image src={logo} alt="logo"/>
             )}
+            size={32}
             containerStyle={{ justifyContent: 'flex-start' }}
           />
           <IconButton onClick={handleDrawerClose}>
