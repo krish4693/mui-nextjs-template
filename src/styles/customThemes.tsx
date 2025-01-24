@@ -106,3 +106,12 @@ export const Logo = styled(Box, {
     justifyContent: "center",
     }));
   
+
+
+export const Quiz = styled(Box)(() => ({
+  backgroundColor: "#ffffff" ,
+  borderRadius: 2,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-start",
+}));

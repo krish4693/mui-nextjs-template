@@ -3,12 +3,15 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-// import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-// import { styled } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { AppBar } from '@/styles/customThemes';
+import { useColorScheme } from '@mui/material/styles';
+import { Tooltip } from '@mui/material';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+
 
 // const drawerWidth = 240;
 
@@ -22,6 +25,21 @@ interface TopBarProps {
 
 
 const TopBar: React.FC<TopBarProps> = ({ open, handleDrawerOpen }) => {
+
+
+  const { mode, systemMode, setMode } = useColorScheme();
+
+
+  const toggleDarkTheme = React.useCallback(
+    () => {
+      if (mode) {
+        const currMode = mode === 'dark' ? 'light' : 'dark';
+        setMode(currMode);
+      }
+    },
+    [mode, systemMode],
+  )
+
   return (
     <AppBar position="fixed" open={open}>
       <Toolbar>
@@ -43,6 +61,11 @@ const TopBar: React.FC<TopBarProps> = ({ open, handleDrawerOpen }) => {
           Persistent drawer
         </Typography>
         <Box>
+          <Tooltip title="Toggle Theme">
+            <IconButton color="inherit" onClick={() => toggleDarkTheme()}>
+              {mode === 'dark' ? <LightModeIcon onClick={toggleDarkTheme} /> : <DarkModeIcon onClick={toggleDarkTheme} />}
+            </IconButton>
+          </Tooltip>
           <IconButton color="inherit">
             <NotificationsIcon />
           </IconButton>
