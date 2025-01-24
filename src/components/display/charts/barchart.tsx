@@ -3,9 +3,7 @@ import Box from "@mui/material/Box";
 import { BarChart } from "@mui/x-charts/BarChart";
 
 export default function ChartBar() {
-  const [seriesNb, setSeriesNb] = React.useState(2);
-  const [itemNb, setItemNb] = React.useState(5);
-  const [skipAnimation, setSkipAnimation] = React.useState(false);
+  const [skipAnimation] = React.useState(false);
 
   return (
     <Box sx={{ width: "100%",backgroundColor:"white" }}>
@@ -18,10 +16,7 @@ export default function ChartBar() {
   );
 }
 
-const highlightScope = {
-  highlight: "series",
-  fade: "global",
-} as const;
+
 
 const testSeries = [
   {

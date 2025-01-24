@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Modal, ModalContent, StyledBackdrop, TriggerButton } from '@/styles/ModalThemes';
+0
 
 interface ModalProps{
   width?: number;

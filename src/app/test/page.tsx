@@ -5,7 +5,6 @@ import ChartPie from "@/components/display/charts/piechart";
 import CustomTable from "@/components/display/table";
 import CustomModal from "@/components/modal/cutomModal";
 import CustomizedSteppers from "@/components/stepper/customStepper";
-import StepProgress from "@/components/stepper/stepper";
 import { Button, Container, Typography } from "@mui/material";
 import { useState } from "react";
 
