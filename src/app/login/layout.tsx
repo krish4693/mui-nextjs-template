@@ -35,6 +35,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
               maxHeight: "400px",
               objectFit: "contain",
             }}
+            priority
           />
         </Box>
 
