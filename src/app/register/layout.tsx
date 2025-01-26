@@ -6,16 +6,16 @@ import login from "../../../public/login1.png";
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <Container
-    component="main"
-    maxWidth="lg"
-    disableGutters
-    sx={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      height: "100vh",
-    }}
-  >
+      component="main"
+      maxWidth="lg"
+      disableGutters
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+      }}
+    >
       <Paper
         elevation={3}
         sx={{
@@ -41,7 +41,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
               maxHeight: "400px",
               objectFit: "contain",
             }}
-          priority
+            priority
           />
         </Box>
 
