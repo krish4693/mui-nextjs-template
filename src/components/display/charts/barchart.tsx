@@ -1,19 +1,19 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import { BarChart } from "@mui/x-charts/BarChart";
+import { Paper } from "@mui/material";
 
 export default function ChartBar() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [skipAnimation, setSkipAnimation] = React.useState(false);
 
   return (
-    <Box sx={{ width: "100%",backgroundColor:"white" }}>
+    <Paper sx={{ width: "100%"}}>
       <BarChart
         height={300}
         series={testSeries}
         skipAnimation={skipAnimation}
       />
-    </Box>
+    </Paper>
   );
 }
 
