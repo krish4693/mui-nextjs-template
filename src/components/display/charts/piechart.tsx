@@ -1,6 +1,6 @@
 import * as React from "react";
     import { PieChart, pieArcLabelClasses } from "@mui/x-charts/PieChart";
-    import { Box, Paper } from "@mui/material";
+    import { Paper } from "@mui/material";
 
     export default function ChartPie() {
     const desktopOS = [
