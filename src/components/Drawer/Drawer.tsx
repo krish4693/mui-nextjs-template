@@ -136,7 +136,7 @@ const MiniDrawer: React.FC<MiniDrawerProps> = ({ children }) => {
   };
 
   const drawerItems = [
-    { text: "Dashboard", icon: <Dashboard />, path: "/dashboard" },
+    { text: "Dashboard", icon: <Dashboard />, path: "/dashboard/statistics" },
     { text: "Settings", icon: <Settings />, path: "/dashboard/settings" },
     { text: "Logout", icon: <Logout />, path: "/login" },
   ];
